@@ -1,0 +1,30 @@
+/* 
+brown : #707774
+Orange : #c64928 */
+
+.Login__Section{
+    background-color: #707774;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Login__Container{
+    height: 70%;
+    width: 80%;
+    background-color: white;
+    border-radius: 25px;
+    display: flex;
+}
+.imageSection{
+    height: 100%;
+    width: 80%;
+}
+.loginImage{
+    object-fit: contain;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    width: inherit;
+    height: 100%;
+}

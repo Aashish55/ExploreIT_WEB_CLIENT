@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter as Router, Switch, Route, withRouter } from 'react-router-dom';
+import './index.css'
 
 import Homepage from './Components/Homepage/Homepage';
-import Travels from './Components/Travels/Travels';
-import Hotels from './Components/Hotels/Hotels'
-import Adventures from './Components/Adventures/Adventures'
-
+// import Travels from './Components/Travels/Travels';
+// import Hotels from './Components/Hotels/Hotels'
+// import Adventures from './Components/Adventures/Adventures'
+import Login from './Components/Auth/Login'
+import Registration from './Components/Auth/Registration'
 
 
 class root extends Component {
@@ -16,9 +18,8 @@ class root extends Component {
     return (
       <Switch>
         <Route exact path='/' component={Homepage} />
-        <Route path='/adventures' component={Adventures} />
-        <Route path='/hotels' component={Hotels} />
-        <Route path='/travels' component={Travels} />
+        <Route path='/login' component={Login} />
+        <Route path='/registration' component={Registration} />
       </Switch>
     );
   }
