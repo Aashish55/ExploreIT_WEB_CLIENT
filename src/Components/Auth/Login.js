@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './style.css';
+import { Link } from "react-router-dom";
 // import LoginImage from './../../images/adventure.jpg'
 
 class Login extends Component {
@@ -22,7 +23,7 @@ class Login extends Component {
 
                     <button className='submit'>Login</button>
 
-                    <p className='switch_text'>Don't have an Account ? <a href='/registration'>Register Here.</a> </p>
+                    <p className='switch_text'>Don't have an Account ?  <Link to="/registration">Register Here.</Link> </p>
                 </div>
             </div>
         );
