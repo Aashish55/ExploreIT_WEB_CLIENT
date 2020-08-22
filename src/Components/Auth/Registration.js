@@ -33,7 +33,8 @@ class Registration extends Component {
         event.preventDefault();
         if (this.isFormValid()) {
             this.setState({ errors: [] });
-            console.log('ready to post')
+            console.log('ready to post');
+            console.log(this.state)
 
 
         }
@@ -80,6 +81,8 @@ class Registration extends Component {
         }
     };
 
+    displayErrors = errors => errors.map((error, i) => <p key={i} className='errorMessage'>{error.message}</p>);
+
     handleChange = event => {
         this.setState({ [event.target.name]: event.target.value });
     };
@@ -89,13 +92,13 @@ class Registration extends Component {
         const {
             fullName,
             userName,
-            gender,
             dob,
             email,
             phone,
             countryCode,
             password,
-            passwordConfirmation
+            passwordConfirmation,
+            errors
         } = this.state;
 
         return (
@@ -109,10 +112,10 @@ class Registration extends Component {
                     <h3>Registration</h3>
 
                     <h4>Full Name</h4>
-                    <input className='input' name='fullName' onChange={this.handleChange} value={fullName} type='text'/>
+                    <input name='fullName' onChange={this.handleChange} value={fullName} type='text' />
 
                     <h4>Username</h4>
-                    <input className='input' name='userName' onChange={this.handleChange} value={userName} type='text'/>
+                    <input name='userName' onChange={this.handleChange} value={userName} type='text' />
 
                     <h4>Gender</h4>
                     <div className='gender'>
@@ -127,23 +130,27 @@ class Registration extends Component {
                     </div>
 
                     <h4>Date of Birth</h4>
-                    <input className='input' value={dob} name='dob' onChange={this.handleChange} type='text'/>
+                    <input value={dob} name='dob' onChange={this.handleChange} type='text' />
 
                     <h4>Email</h4>
-                    <input className='input' name='email' onChange={this.handleChange} value={email} type='email' />
+                    <input name='email' onChange={this.handleChange} value={email} type='email' />
 
                     <h4>Phone Number</h4>
-                    <input className='input' type='number' name='phone' onChange={this.handleChange} value={phone} />
+                    <input type='number' name='phone' onChange={this.handleChange} value={phone} />
 
                     <h4>Country Code</h4>
-                    <input className='input' value={countryCode} onChange={this.handleChange} name='countryCode' type='text'/>
+                    <input value={countryCode} onChange={this.handleChange} name='countryCode' type='text' />
 
                     <h4>Password</h4>
-                    <input className='input' type='password' name='password' onChange={this.handleChange} value={password} />
+                    <input type='password' name='password' onChange={this.handleChange} value={password} />
 
                     <h4>Confirm Password</h4>
-                    <input className='input' type='password' name='passwordConfirmation' onChange={this.handleChange} value={passwordConfirmation} />
+                    <input type='password' name='passwordConfirmation' onChange={this.handleChange} value={passwordConfirmation} />
 
+                    {errors.length > 0 && (
+                        <div className='errorSection'>Error:
+                            {this.displayErrors(errors)}
+                        </div>)}
 
                     <button className='submit'>Sign Up</button>
 
