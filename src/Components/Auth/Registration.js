@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './style.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import Notification from '../Notification/Notification';
 
 class Registration extends Component {
     state = {
@@ -16,7 +17,8 @@ class Registration extends Component {
         passwordConfirmation: '',
         latitude: null,
         longitude: null,
-        errors: []
+        errors: [],
+        top: -100
     }
 
     componentDidMount() {
@@ -49,16 +51,25 @@ class Registration extends Component {
                 "latitude": this.state.latitude.toString(),
                 "longitude": this.state.longitude.toString(),
             }
-            console.log(registrationData)
             axios.post('http://localhost:5000/api/v1/users', registrationData)
                 .then(response => {
                     console.log(response);
+                    this.showNotification();
+
                 })
                 .catch(error => {
                     console.log(error);
                 });
         }
     };
+
+    showNotification = () => {
+        this.setState({ top: 16 }, () => {
+            setTimeout(() => {
+                this.setState({ top: -100 })
+            }, 3000)
+        })
+    }
 
     isFormValid = () => {
         let errors = [];
@@ -123,130 +134,134 @@ class Registration extends Component {
             countryCode,
             password,
             passwordConfirmation,
-            errors
+            errors,
+            top
         } = this.state;
 
         return (
-            <div className='section'>
-                <div className='leftPart'>
-                    <h1>ExploreIT</h1>
-                    <p className='secondary_text'>Some Text Here...</p>
-                    <h2 className='arrowRight'> &rsaquo; </h2>
-                </div>
-                <form className='form' onSubmit={this.handleSubmit}>
+            <React.Fragment>
+                <div className='section'>
+                    <div className='leftPart'>
+                        <h1>ExploreIT</h1>
+                        <p className='secondary_text'>Some Text Here...</p>
+                        <h2 className='arrowRight'> &rsaquo; </h2>
+                    </div>
+                    <form className='form' onSubmit={this.handleSubmit}>
 
-                    <h3>Registration</h3>
+                        <h3>Registration</h3>
 
-                    <h4>Full Name</h4>
-                    <input
-                        name='fullName'
-                        onChange={this.handleChange}
-                        value={fullName}
-                        type='text'
-                    />
+                        <h4>Full Name</h4>
+                        <input
+                            name='fullName'
+                            onChange={this.handleChange}
+                            value={fullName}
+                            type='text'
+                        />
 
-                    <h4>Username</h4>
-                    <input
-                        name='userName'
-                        onChange={this.handleChange}
-                        value={userName}
-                        type='text'
-                    />
+                        <h4>Username</h4>
+                        <input
+                            name='userName'
+                            onChange={this.handleChange}
+                            value={userName}
+                            type='text'
+                        />
 
-                    <h4>Gender</h4>
-                    <div className='gender'>
-                        <label className='genderLabel'>
-                            <input type="radio"
-                                value="Male"
-                                name='gender'
-                                onChange={this.handleChange}
-                                className='radio'
-                            />
+                        <h4>Gender</h4>
+                        <div className='gender'>
+                            <label className='genderLabel'>
+                                <input type="radio"
+                                    value="Male"
+                                    name='gender'
+                                    onChange={this.handleChange}
+                                    className='radio'
+                                />
                         Male
                     </label>
-                        <label className='genderLabel'>
-                            <input
-                                type="radio"
-                                value="Female"
-                                name='gender'
-                                onChange={this.handleChange}
-                                className='radio'
-                            />
+                            <label className='genderLabel'>
+                                <input
+                                    type="radio"
+                                    value="Female"
+                                    name='gender'
+                                    onChange={this.handleChange}
+                                    className='radio'
+                                />
                         Female
                     </label>
-                    </div>
+                        </div>
 
-                    <h4>Date of Birth</h4>
-                    <input
-                        value={dob}
-                        name='dob'
-                        onChange={this.handleChange}
-                        type='text'
-                    />
+                        <h4>Date of Birth</h4>
+                        <input
+                            value={dob}
+                            name='dob'
+                            onChange={this.handleChange}
+                            type='text'
+                        />
 
-                    <h4>Email</h4>
-                    <input
-                        name='email'
-                        onChange={this.handleChange}
-                        value={email}
-                        type='email'
-                    />
+                        <h4>Email</h4>
+                        <input
+                            name='email'
+                            onChange={this.handleChange}
+                            value={email}
+                            type='email'
+                        />
 
-                    <h4>Phone Number</h4>
-                    <input
-                        type='number'
-                        name='phone'
-                        onChange={this.handleChange}
-                        value={phone}
-                    />
+                        <h4>Phone Number</h4>
+                        <input
+                            type='number'
+                            name='phone'
+                            onChange={this.handleChange}
+                            value={phone}
+                        />
 
-                    <h4>Country Code</h4>
-                    <input
-                        value={countryCode}
-                        onChange={this.handleChange}
-                        name='countryCode'
-                        type='text'
-                    />
+                        <h4>Country Code</h4>
+                        <input
+                            value={countryCode}
+                            onChange={this.handleChange}
+                            name='countryCode'
+                            type='text'
+                        />
 
-                    <h4>Password</h4>
-                    <input
-                        type='password'
-                        name='password'
-                        onChange={this.handleChange}
-                        value={password}
-                    />
+                        <h4>Password</h4>
+                        <input
+                            type='password'
+                            name='password'
+                            onChange={this.handleChange}
+                            value={password}
+                        />
 
-                    <h4>Confirm Password</h4>
-                    <input
-                        type='password'
-                        name='passwordConfirmation'
-                        onChange={this.handleChange}
-                        value={passwordConfirmation}
-                    />
+                        <h4>Confirm Password</h4>
+                        <input
+                            type='password'
+                            name='passwordConfirmation'
+                            onChange={this.handleChange}
+                            value={passwordConfirmation}
+                        />
 
-                    {errors.length > 0 && (
-                        <div className='errorSection'>Error:
-                            {this.displayErrors(errors)}
-                        </div>)}
+                        {errors.length > 0 && (
+                            <div className='errorSection'>Error:
+                                {this.displayErrors(errors)}
+                            </div>)}
 
-                    <button
-                        onClick={this.handleSubmit}
-                        className='submit'
-                    >
-                        Sign Up
+                        <button
+                            onClick={this.handleSubmit}
+                            className='submit'
+                        >
+                            Sign Up
                     </button>
 
-                    <p
-                        className='switch_text'
-                    >
-                        Already have an Account ?
-                    <Link to="/login"
+                        <p
+                            className='switch_text'
                         >
-                            Login Here
+                            Already have an Account ?
+                    <Link to="/login"
+                            >
+                                Login Here
                     </Link>
-                    </p>
-                </form>
-            </div>
+                        </p>
+                    </form>
+                </div>
+                <Notification topPosition={top} />
+            </React.Fragment>
         );
     }
 }
