@@ -55,6 +55,7 @@ class Registration extends Component {
                 .then(response => {
                     console.log(response);
                     this.showNotification();
+                    this.clearDataFields();
 
                 })
                 .catch(error => {
@@ -62,6 +63,20 @@ class Registration extends Component {
                 });
         }
     };
+
+    clearDataFields = () => {
+        this.setState({
+            fullName: '',
+            userName: '',
+            gender: '',
+            dob: '',
+            email: '',
+            phone: '',
+            countryCode: '',
+            password: '',
+            passwordConfirmation: '',
+        })
+    }
 
     showNotification = () => {
         this.setState({ top: 16 }, () => {
@@ -169,14 +184,15 @@ class Registration extends Component {
                         <h4>Gender</h4>
                         <div className='gender'>
                             <label className='genderLabel'>
-                                <input type="radio"
+                                <input
+                                    type="radio"
                                     value="Male"
                                     name='gender'
                                     onChange={this.handleChange}
                                     className='radio'
                                 />
-                        Male
-                    </label>
+                                Male
+                            </label>
                             <label className='genderLabel'>
                                 <input
                                     type="radio"
@@ -185,8 +201,8 @@ class Registration extends Component {
                                     onChange={this.handleChange}
                                     className='radio'
                                 />
-                        Female
-                    </label>
+                                Female
+                            </label>
                         </div>
 
                         <h4>Date of Birth</h4>
@@ -253,7 +269,8 @@ class Registration extends Component {
                             className='switch_text'
                         >
                             Already have an Account ?
-                    <Link to="/login"
+                    <Link
+                                to="/login"
                             >
                                 Login Here
                     </Link>
