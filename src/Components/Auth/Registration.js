@@ -277,7 +277,7 @@ class Registration extends Component {
                         </p>
                     </form>
                 </div>
-                <Notification topPosition={top} />
+                <Notification message={'User Registration Successful.'} topPosition={top} />
             </React.Fragment>
         );
     }

@@ -21,7 +21,7 @@ class Notification extends Component {
 
     render() {
         return (
-            <Container top={this.props.topPosition} >User Created Successfully.</Container>
+            <Container top={this.props.topPosition} >{this.props.message}</Container>
         );
     }
 }

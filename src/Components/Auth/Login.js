@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import './style.css';
 import { Link } from "react-router-dom";
 import axios from 'axios';
+import Notification from '../Notification/Notification'
 
 class Login extends Component {
     state = {
         email: '',
         password: '',
-        errors: []
+        errors: [],
+        top: -100
     }
 
     loginHandler = (event) => {
@@ -22,13 +24,23 @@ class Login extends Component {
             }
             axios.post('http://localhost:5000/api/v1/users/login',loginData)
                 .then(response=>{
-                    console.log(response)
+                    console.log(response);
+                    this.showNotification();
+                    
                 })
                 .catch(error=>{
                     console.log(error)
                 })
             
         }
+    }
+
+    showNotification = () => {
+        this.setState({ top: 16 }, () => {
+            setTimeout(() => {
+                this.setState({ top: -100 })
+            }, 3000)
+        })
     }
 
     isFormValid = () => {
@@ -58,9 +70,10 @@ class Login extends Component {
     displayErrors = errors => errors.map((error, i) => <p key={i} className='errorMessage'>{error.message}</p>);
 
     render() {
-        const { email, password, errors } = this.state
+        const { email, password, errors, top } = this.state
 
         return (
+            <React.Fragment>
             <div className='section'>
                 <div className='leftPart'>
                     <h1>ExploreIT</h1>
@@ -97,6 +110,8 @@ class Login extends Component {
                     <p className='switch_text'>Don't have an Account ?  <Link to="/registration">Register Here.</Link> </p>
                 </form>
             </div>
+            <Notification message={'User Login Successful.'} topPosition={top} />
+            </React.Fragment>
         );
     }
 }
