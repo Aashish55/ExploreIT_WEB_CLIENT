@@ -157,8 +157,10 @@ class Registration extends Component {
             <React.Fragment>
                 <div className='section'>
                     <div className='leftPart'>
-                        <h1>ExploreIT</h1>
-                        <p className='secondary_text'>Some Text Here...</p>
+                        <div className='textArea'>
+                            <h1>ExploreIT</h1>
+                            <p className='secondary_text'>Some Text Here...</p>
+                        </div>
                         <h2 className='arrowRight'> &rsaquo; </h2>
                     </div>
                     <form className='form' onSubmit={this.handleSubmit}>

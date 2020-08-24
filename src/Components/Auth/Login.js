@@ -19,19 +19,18 @@ class Login extends Component {
             this.setState({ errors: [] });
 
             const loginData = {
-                "loginInfo":this.state.email,
-                "password":this.state.password
+                "loginInfo": this.state.email,
+                "password": this.state.password
             }
-            axios.post('http://localhost:5000/api/v1/users/login',loginData)
-                .then(response=>{
+            axios.post('http://localhost:5000/api/v1/users/login', loginData)
+                .then(response => {
                     console.log(response);
                     this.showNotification();
-                    
+
                 })
-                .catch(error=>{
+                .catch(error => {
                     console.log(error)
                 })
-            
         }
     }
 
@@ -74,43 +73,45 @@ class Login extends Component {
 
         return (
             <React.Fragment>
-            <div className='section'>
-                <div className='leftPart'>
-                    <h1>ExploreIT</h1>
-                    <p className='secondary_text'>Some Text Here...</p>
-                    <h2 className='arrowRight'>&rsaquo;</h2>
+                <div className='section'>
+                    <div className='leftPart'>
+                        <div className='textArea'>
+                            <h1>ExploreIT</h1>
+                            <p className='secondary_text'>Some Text Here...</p>
+                        </div>
+                        <h2 className='arrowRight'>&rsaquo;</h2>
+                    </div>
+                    <form className='form' onSubmit={this.loginHandler} >
+                        <h3>Login</h3>
+
+                        <h4>Email</h4>
+                        <input
+                            name='email'
+                            onChange={this.handleChange}
+                            value={email}
+                            type='email'
+                        />
+
+                        <h4>Password</h4>
+                        <input
+                            type='password'
+                            name='password'
+                            onChange={this.handleChange}
+                            value={password}
+                        />
+
+                        {errors.length > 0 && (
+                            <div className='errorSection'>Error:
+                                {this.displayErrors(errors)}
+                            </div>)
+                        }
+
+                        <button className='submit' onClick={this.loginHandler}>Login</button>
+
+                        <p className='switch_text'>Don't have an Account ?  <Link to="/registration">Register Here.</Link> </p>
+                    </form>
                 </div>
-                <form className='form' onSubmit={this.loginHandler} >
-                    <h3>Login</h3>
-
-                    <h4>Email</h4>
-                    <input
-                        name='email'
-                        onChange={this.handleChange}
-                        value={email}
-                        type='email'
-                    />
-
-                    <h4>Password</h4>
-                    <input
-                        type='password'
-                        name='password'
-                        onChange={this.handleChange}
-                        value={password}
-                    />
-
-                    {errors.length > 0 && (
-                        <div className='errorSection'>Error:
-                            {this.displayErrors(errors)}
-                        </div>)
-                    }
-
-                    <button className='submit' onClick={this.loginHandler}>Login</button>
-
-                    <p className='switch_text'>Don't have an Account ?  <Link to="/registration">Register Here.</Link> </p>
-                </form>
-            </div>
-            <Notification message={'User Login Successful.'} topPosition={top} />
+                <Notification message={'User Login Successful.'} topPosition={top} />
             </React.Fragment>
         );
     }
