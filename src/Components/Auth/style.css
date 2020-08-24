@@ -185,20 +185,20 @@ label{
 }
 @media only screen and (max-width: 550px) {
    .section{
-       flex-direction: column;
+        flex-direction: column;
    }
    .leftPart{
-       width: 100%;
-       border-radius: 0 0 40px 40px;
+        width: 100%;
+        border-radius: 0 0 40px 40px;
    }
    .form{
-       width: 100%;
+        width: 100%;
    }
    .leftPart{
-       position: relative;
+        position: relative;
    }
    .arrowRight{
-       position: absolute;
+        position: absolute;
         top: 70%;
         right: 50%;
         transform: translateX(50%) rotate(90deg);
