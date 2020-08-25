@@ -24,7 +24,7 @@ class Login extends Component {
             }
             axios.post('http://localhost:5000/api/v1/users/login', loginData)
                 .then(response => {
-                    console.log(response);
+                    console.log(response.data);
                     this.showNotification();
 
                 })

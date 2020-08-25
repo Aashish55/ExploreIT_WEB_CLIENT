@@ -53,7 +53,7 @@ class Registration extends Component {
             }
             axios.post('http://localhost:5000/api/v1/users', registrationData)
                 .then(response => {
-                    console.log(response);
+                    console.log(response.data);
                     this.showNotification();
                     this.clearDataFields();
 
