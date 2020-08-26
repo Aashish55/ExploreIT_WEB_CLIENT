@@ -26,6 +26,8 @@ class Login extends Component {
                 .then(response => {
                     console.log(response.data);
                     this.showNotification();
+                    localStorage.setItem('login',response.data.token)
+                    window.location.reload();
 
                 })
                 .catch(error => {
