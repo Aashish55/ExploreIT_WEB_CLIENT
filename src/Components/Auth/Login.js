@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import './style.css';
 import { Link } from "react-router-dom";
 import axios from 'axios';
-import Notification from '../Notification/Notification'
+import Notification from '../Notification/Notification';
+import { setAuthorization } from '../../utils/setAuthorization';
+import { connect } from 'react-redux';
+import { setUser } from '../../action/index';
 
 class Login extends Component {
     state = {
@@ -26,9 +29,10 @@ class Login extends Component {
                 .then(response => {
                     console.log(response.data);
                     this.showNotification();
-                    localStorage.setItem('login',response.data.token)
+                    const token = response.data.token;
+                    localStorage.setItem('jwtToken', token);
+                    setAuthorization(token);
                     window.location.reload();
-
                 })
                 .catch(error => {
                     console.log(error)
@@ -119,4 +123,4 @@ class Login extends Component {
     }
 }
 
-export default Login;
+export default connect(null,{setUser})(Login);

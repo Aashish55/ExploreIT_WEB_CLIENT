@@ -3,16 +3,18 @@ import { connect } from 'react-redux';
 
 
 class Home extends Component {
-    state = {}
-    render() { 
+    state={
+        user:this.props.currentUser
+    }
+    render() {
         return (
             <div>
                 This is home after login
-                {this.props.currentUser}
             </div>
-        );
+        )
     }
-}
+
+};
 
 const mapStateToProps = state => ({
     currentUser: state.user.currentUser,

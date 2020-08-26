@@ -4,7 +4,7 @@ import React from 'react';
 const Spinner = () => (
 
     <div className='loaderPage'>
-        Loading...
+        <h3>Loading...</h3>
     </div>
 )
 

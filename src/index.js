@@ -8,6 +8,8 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import rootReducer from './reducers';
 import { setUser, clearUser } from './action';
 import './index.css'
+import { setAuthorization } from './utils/setAuthorization';
+import jwt from 'jsonwebtoken';
 
 import Homepage from './Components/Homepage/Homepage';
 // import Travels from './Components/Travels/Travels';
@@ -16,25 +18,23 @@ import Homepage from './Components/Homepage/Homepage';
 import Login from './Components/Auth/Login'
 import Registration from './Components/Auth/Registration'
 import Home from './Components/Home';
-import Spinner from './Components/Spinner/Spinner';
 
 const store = createStore(rootReducer, composeWithDevTools())
 
 class Root extends Component {
-  state = {}
 
   componentDidMount() {
-    if (localStorage.getItem('login')) {
-      this.props.setUser(localStorage.getItem('login'));
+    if (localStorage.jwtToken) {
+      setAuthorization(localStorage.jwtToken)
+      this.props.setUser(jwt.decode(localStorage.jwtToken));
       this.props.history.push('/home')
-    } else {
-      this.props.history.push('/login');
-      this.props.clearUser();
+    }else{
+      this.props.history.push('/login')
     }
   }
 
   render() {
-    return this.props.isLoading? <Spinner />: (
+    return (
       <Switch>
         <Route exact path='/' component={Homepage} />
         <Route path='/login' component={Login} />
