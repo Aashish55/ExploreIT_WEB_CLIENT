@@ -25,7 +25,7 @@ class Login extends Component {
                 "loginInfo": this.state.email,
                 "password": this.state.password
             }
-            axios.post('http://localhost:5000/api/v1/users/login', loginData)
+            axios.post('https://explore-it-main.herokuapp.com/api/v1/users/login', loginData)
                 .then(response => {
                     console.log(response.data);
                     this.showNotification();

@@ -51,7 +51,7 @@ class Registration extends Component {
                 "latitude": this.state.latitude.toString(),
                 "longitude": this.state.longitude.toString(),
             }
-            axios.post('http://localhost:5000/api/v1/users', registrationData)
+            axios.post('http://explore-it-main.herokuapp.com/api/v1/users', registrationData)
                 .then(response => {
                     console.log(response.data);
                     this.showNotification();

@@ -10,14 +10,10 @@ import { setUser, clearUser } from './action';
 import './index.css'
 import { setAuthorization } from './utils/setAuthorization';
 import jwt from 'jsonwebtoken';
-
-import Homepage from './Components/Homepage/Homepage';
-// import Travels from './Components/Travels/Travels';
-// import Hotels from './Components/Hotels/Hotels'
-// import Adventures from './Components/Adventures/Adventures'
 import Login from './Components/Auth/Login'
 import Registration from './Components/Auth/Registration'
 import Home from './Components/Home';
+import Spinner from './Components/Spinner/Spinner';
 
 const store = createStore(rootReducer, composeWithDevTools())
 
@@ -27,19 +23,19 @@ class Root extends Component {
     if (localStorage.jwtToken) {
       setAuthorization(localStorage.jwtToken)
       this.props.setUser(jwt.decode(localStorage.jwtToken));
-      this.props.history.push('/home')
+      this.props.history.push('/')
     }else{
       this.props.history.push('/login')
+      this.props.clearUser();
     }
   }
 
   render() {
-    return (
+    return  this.props.isLoading?<Spinner /> : (
       <Switch>
-        <Route exact path='/' component={Homepage} />
+        <Route exact path='/' component={Home} />
         <Route path='/login' component={Login} />
         <Route path='/registration' component={Registration} />
-        <Route path='/home' component={Home} />
       </Switch>
     );
   }
