@@ -16,6 +16,9 @@ const Main = styled.div`
   width: 50%;
   position: relative;
   overflow: hidden;
+
+  display:flex;
+  flex-direction:column;
 `;
 
 const Description = styled.div`
@@ -39,10 +42,12 @@ const Center = styled.div`
 `;
 const Destinations = styled.div`
   display: flex;
-  margin: 2rem 3rem;
-  color: brown;
-  height: 100%;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content:space-evenly;
+  flex-grow:1;
   width: 100%;
+  overflow:auto;
 `;
 
 class Home extends Component {
