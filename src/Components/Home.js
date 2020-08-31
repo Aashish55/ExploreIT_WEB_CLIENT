@@ -3,7 +3,8 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 import AppBar from "./Appbar/Appbar";
 import SearchBar from "./UI/SearchBar/SearchBar";
-import DestinationCards from './UI/DestinationCards/DestinationCards'
+import PlaceDescription from "./UI/PlaceDescription/PlaceDescription";
+import photo from "../images/adventure.jpg";
 
 const Homepage = styled.div`
   background-color: white;
@@ -17,8 +18,8 @@ const Main = styled.div`
   position: relative;
   overflow: hidden;
 
-  display:flex;
-  flex-direction:column;
+  display: flex;
+  flex-direction: column;
 `;
 
 const Description = styled.div`
@@ -35,39 +36,86 @@ const RecomendationText = styled.h4`
   text-align: left;
   margin: 0 3rem;
 `;
-const Center = styled.div`
+const CenterRow = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
 `;
+const Center = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+`;
 const Destinations = styled.div`
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  justify-content:space-evenly;
-  flex-grow:1;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  flex-grow: 1;
   width: 100%;
-  overflow:auto;
+  overflow: auto;
+`;
+
+const Card = styled.div`
+  height: 30rem;
+  width: 22rem;
+  margin: 1rem 0;
+  background-color: white;
+  border-radius: 3rem;
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  padding: 2rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background-image: url(${photo});
+  background-size: cover;
+  background-position: center;
+`;
+const PlaceName = styled.div`
+  color: white;
+  font-size: 2.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-family: -apple-system;
+  padding: 1rem 15rem;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  transform: translateY(1rem) rotate(-8deg);
+  background-image: linear-gradient(to bottom right, #ffb900, #ff7730);
 `;
 
 class Home extends Component {
   state = {
     user: this.props.currentUser,
+    cardClicked: true,
   };
   render() {
+    const { cardClicked } = this.state;
     return (
       <Homepage>
         <Main>
           <AppBar />
-          <Center>
+          <CenterRow>
             <SearchBar />
-          </Center>
+          </CenterRow>
           <RecomendationText>Our Recommendation</RecomendationText>
           <Destinations>
-            <DestinationCards />
+            <Card>
+              <PlaceName>Dhulikhel</PlaceName>
+            </Card>
           </Destinations>
         </Main>
-        <Description />
+        <Description>
+          {cardClicked ? (
+            <PlaceDescription />
+          ) : (
+            <Center>
+              <h1>ExploreIT</h1>
+            </Center>
+          )}
+        </Description>
       </Homepage>
     );
   }

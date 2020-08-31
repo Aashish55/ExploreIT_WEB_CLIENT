@@ -6,12 +6,11 @@ import "./appbar.css";
 const Container = styled.div`
   height: 8rem;
   box-shadow: 0px 3px 2px rgba(0, 0, 0, 0.1);
-  padding: 1rem 3rem;
+  padding: 2rem 3rem;
   width:100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  z-index:100;
   margin:0;
 `;
 
@@ -36,9 +35,6 @@ const Appbar = () => (
         </li>
         <li>
           <a className='menuOptionLink' href="/option"> Option 3 </a>
-        </li>
-        <li>
-          <a className='menuOptionLink' href="/option"> Option 4 </a>
         </li>
       </ul>
     </label>

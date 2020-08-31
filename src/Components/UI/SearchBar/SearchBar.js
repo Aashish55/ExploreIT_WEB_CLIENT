@@ -13,7 +13,7 @@ const Searchbar = styled.input`
     padding: 1rem 4.5rem;
     width: 85%;
     outline: none;
-    margin: 2rem 2rem;
+    margin: 1.5rem 2rem;
     color: #888;
 `;
 

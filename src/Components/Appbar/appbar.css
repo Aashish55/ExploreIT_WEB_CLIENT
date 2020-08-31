@@ -57,7 +57,11 @@
 } 
 .checkBox:checked + .menu + ul {
     opacity: 1;
-  }
+    display: block;
+}
+.checkBox:not(:checked) + .menu + ul {
+    display: none;
+}
 ul {
     z-index: 200;
     position: absolute;
@@ -69,7 +73,6 @@ ul {
   }
 .menuOptionLink{
     margin-bottom: 1em;
-    display: block;
     color: #000;
     text-decoration: none;
   }
