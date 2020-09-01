@@ -4,7 +4,7 @@ class PlaceDescription extends Component {
     state = {  }
     render() { 
         return (
-            <h4>This is description of particular Place.</h4>
+            <h3 style={{color:'white'}}>This is description of particular Place.</h3>
         );
     }
 }

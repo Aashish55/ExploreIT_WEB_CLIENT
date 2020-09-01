@@ -89,8 +89,13 @@ const PlaceName = styled.div`
 class Home extends Component {
   state = {
     user: this.props.currentUser,
-    cardClicked: true,
+    cardClicked: false,
   };
+
+  cardClickHandler=()=>{
+    this.setState({cardClicked:true});
+  }
+
   render() {
     const { cardClicked } = this.state;
     return (
@@ -102,8 +107,14 @@ class Home extends Component {
           </CenterRow>
           <RecomendationText>Our Recommendation</RecomendationText>
           <Destinations>
-            <Card>
+            <Card onClick={this.cardClickHandler}>
               <PlaceName>Dhulikhel</PlaceName>
+            </Card>
+            <Card onClick={this.cardClickHandler}>
+              <PlaceName>Chitwan</PlaceName>
+            </Card>
+            <Card onClick={this.cardClickHandler}>
+              <PlaceName>Panuati</PlaceName>
             </Card>
           </Destinations>
         </Main>
