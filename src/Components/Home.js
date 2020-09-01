@@ -39,8 +39,8 @@ const Main = styled.div`
 const Description = styled.div`
   width: 50%;
   height: 100vh;
-  overflow-x: hidden;
-  overflow-y auto;
+  overflow:hidden;
+  overflow-y: auto;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   background: #c54409;
@@ -105,17 +105,19 @@ const PlaceName = styled.div`
 `;
 
 const DetailImage = styled.div`
-  height: 35rem;
+  height: 100000000000rem;
   width: 100%;
   background-color: orange;
-  background-image: linear-gradient(
+  background-image: 
+    linear-gradient(
       to bottom,
       transparent,
       rgb(197, 68, 9, 0.5)
     ),
     url(${(props) => props.img});
   background-size: cover;
-  background-position: center;
+  background-position: center;  
+  align-self:flex-start;
 `;
 const TextContainer = styled.div`
   padding: 0 3rem;
@@ -129,8 +131,17 @@ const Title = styled.div`
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-style: normal;
-  font-weight: normal;
+  font-weight: bold;
   font-size: 5rem;
+  color: white;
+  padding-bottom: 1rem;
+`;
+const Subtitle = styled.div`
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 4rem;
   color: white;
   padding-bottom: 1rem;
 `;
@@ -219,22 +230,57 @@ class Home extends Component {
               : null}
           </Destinations>
         </Main>
+
         <Description>
-          {placeDetails ? (
-            <React.Fragment>
-              <DetailImage
-                img={this.sendImage(placeDetails.name)}
-              ></DetailImage>
-              <TextContainer>
-                <Title>{placeDetails.name}</Title>
-                <PlaceDescription>{placeDetails.description}</PlaceDescription>
-              </TextContainer>
-            </React.Fragment>
-          ) : (
+        {placeDetails ? (
+          <React.Fragment>
+            <DetailImage img={this.sendImage(placeDetails.name)}></DetailImage>
+            <TextContainer>
+              <Title>{placeDetails.name}</Title>
+              <PlaceDescription>{placeDetails.description}</PlaceDescription>
+
+              {placeDetails.hotels && placeDetails.hotels.length > 0
+                ? placeDetails.hotels.map((hotel,i) => (
+                    <React.Fragment key={i}>
+                      <Subtitle> {hotel.name} </Subtitle>
+                      <PlaceDescription>
+                        {hotel.hotelDetails}
+                      </PlaceDescription>
+                    </React.Fragment>
+                  ))
+                : null
+              }
+              {placeDetails.adventures && placeDetails.adventures.length > 0
+                ? placeDetails.adventures.map((adventure,i) => (
+                    <React.Fragment key={i}>
+                      <Subtitle> {adventure.name} </Subtitle>
+                      <PlaceDescription>
+                        {adventure.adventureDetails}
+                      </PlaceDescription>
+                    </React.Fragment>
+                  ))
+                : null
+              }
+              {placeDetails.tours && placeDetails.tours.length > 0
+                ? placeDetails.tours.map((tour,i) => (
+                    <React.Fragment key={i}>
+                      <Subtitle> {tour.name} </Subtitle>
+                      <PlaceDescription>
+                        {tour.tourDetails}
+                      </PlaceDescription>
+                    </React.Fragment>
+                  ))
+                : null
+              }
+            </TextContainer>
+          </React.Fragment>
+        ) : (
+          
             <Center>
               <h1 className="title">ExploreIT</h1>
             </Center>
-          )}
+         
+        )}
         </Description>
       </Homepage>
     );

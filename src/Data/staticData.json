@@ -2,7 +2,6 @@
     {
         "name": "Panauti",
         "description": "A sightseeing tour around Panauti with the host family is sure to interest travellers with various tastes. The women of Panauti have been able to generate extra income for their households through hosting guests, and have some control over their own money.",
-        "image": "",
         "hotels": [
             {
                 "name": "Hotel Panauti",
@@ -28,8 +27,7 @@
     },
     {
         "name": "Bhotekoshi",
-        "description": "Thril and exictement full sports bungy jumpoing",
-        "image": "",
+        "description": "Thril and exictement full sports bungy jumping.",
         "hotels": [
             {
                 "name": "The Last Resort",
@@ -52,7 +50,6 @@
     {
         "name": "Pokhara",
         "description": "Most visitors to Pokhara stop here before starting or after finishing the Round Annapurana trekking route. Because of its popularity with travelers, the city itself has relatively modern hotels and restaurants, but you’ll also find ancient lakes, waterfalls and gorges, and, of course, majestic views of the Himalayan Mountains.",
-        "image": "",
         "hotels": [
             {
                 "name": "Three Jewels Boutique Hotel",
@@ -83,7 +80,6 @@
     {
         "name": "Dhulikhel",
         "description": "Dhulikhel Municipality is a major part of the Kathmandu Valley Cultural Trekking Trail. This five-day trail provides a short trek with himalayas in the background and passes showcases a number of cultural highlights and rich biodiversity.",
-        "image": "",
         "hotels": [
             {
                 "name": "Mount Princess Hotel",
@@ -110,7 +106,6 @@
     {
         "name": "Dhungkharka",
         "description": "Dhungkharka in Central Region (region) is a city in Nepal - about 16 mi (or 26 km) South-East of Kathmandu, the country's capital city",
-        "image": "",
         "hotels": [
             {
                 "name": "Dhunkharka Homestay",
@@ -133,7 +128,6 @@
     {
         "name": "Muktinath",
         "description": "Muktinath Temple is a sacred place both for Hindus and Buddhists located in Muktinath Valley at an altitude of 3,710 meters at the foot of the Thorong La pass, Mustang district, Nepal.",
-        "image": "",
         "hotels": [
             {
                 "name": "Hotel Grand Shambala",
@@ -156,17 +150,13 @@
     {
         "name": "Sworgadwari",
         "description": "Sworgadwari is a hilltop temple and pilgrimage site in Pyuthan District, Nepal, commemorating the special role of cows in Hinduism.",
-        "image": "",
         "hotels": [
             {
                 "name": "Ashram",
                 "hotelDetails": "No hotels nearby. There is temple ashram"
             }
         ],
-        "adventures": {
-            "name": "",
-            "adventureDetails": ""
-        },
+        "adventures": [],
         "tours": [
             {
                 "name": "Transport",
@@ -177,7 +167,6 @@
     {
         "name": "Kalinchowk",
         "description": "The religious temple of the Hindu goddess Kali, located in the GauriShankar conservation area is in the height of 3842m above the sea level.  You can see the breathtaking hills on the way, the gumbas and stupas can be visualized in the way and the beauty of our national flower laligurans (Rhododendron) and its varieties will be settled in your memories forever.",
-        "image": "",
         "hotels": [
             {
                 "name": "Kalinchowk Kasturi Lodge",
@@ -204,7 +193,6 @@
     {
         "name": "Mardi",
         "description": "Mardi High Camp Trek could be another best short winter trek in Annapurna Region. Generally the Mardi Viewpoint and Base is the point of the trek but the views from Badal Danda and Mardi High Camp are incredible. ",
-        "image": "",
         "hotels": [
             {
                 "name": "Accommodation",
@@ -227,7 +215,6 @@
     {
         "name": "Mustang",
         "description": "Mustang, formerly Kingdom of Lo, is a remote and isolated region of the Nepalese Himalayas. The Upper Mustang was a restricted demilitarized area until 1992 which makes it one of the most preserved regions in the world, with a majority of the population still speaking traditional Tibetic languages.",
-        "image": "",
         "hotels": [
             {
                 "name": "Accommodation",
@@ -250,7 +237,6 @@
     {
         "name": "Muldai Khopra",
         "description": "The Khayer Lake from Khopra Danda is not possible because it takes almost a whole day from Khopra Danda and also it's icy and slippery. Muldai is another beautiful viewpoint on this trek besides of Khopra Danda. For this trek, we need to confirm before with the community lodges in Mid Winter. ",
-        "image": "",
         "hotels": [
             {
                 "name": "Khopra community lodge",
@@ -273,7 +259,6 @@
     {
         "name": "Gokyo Lake",
         "description": "Gokyo Lakes are oligotrophic lakes in Nepal's Sagarmatha National Park, located at an altitude of 4,700–5,000 m above sea level. These lakes are the world's highest freshwater lake system comprising six main lakes, of which Thonak Lake is the largest. ",
-        "image": "",
         "hotels": [
             {
                 "name": "Accommodation",
