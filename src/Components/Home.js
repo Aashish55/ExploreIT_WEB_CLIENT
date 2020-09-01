@@ -105,8 +105,9 @@ const PlaceName = styled.div`
 `;
 
 const DetailImage = styled.div`
-  height: 100000000000rem;
+  height: 45rem;
   width: 100%;
+  
   background-color: orange;
   background-image: 
     linear-gradient(
@@ -117,7 +118,12 @@ const DetailImage = styled.div`
     url(${(props) => props.img});
   background-size: cover;
   background-position: center;  
-  align-self:flex-start;
+`;
+const TransparentText = styled.div`
+  background-color:transparent;
+  height: 45rem;
+  color:transparent;
+  width: 100%;
 `;
 const TextContainer = styled.div`
   padding: 0 3rem;
@@ -234,7 +240,9 @@ class Home extends Component {
         <Description>
         {placeDetails ? (
           <React.Fragment>
-            <DetailImage img={this.sendImage(placeDetails.name)}></DetailImage>
+            <DetailImage img={this.sendImage(placeDetails.name)}>
+              <TransparentText>ExploreIT</TransparentText>
+            </DetailImage>
             <TextContainer>
               <Title>{placeDetails.name}</Title>
               <PlaceDescription>{placeDetails.description}</PlaceDescription>
