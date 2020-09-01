@@ -177,13 +177,13 @@ class Registration extends Component {
         <div className="section">
           <div className="leftPart">
             <div className="textArea">
-              <h1>ExploreIT</h1>
+              <h1 className='title'>ExploreIT</h1>
               <p className="secondary_text">Some Text Here...</p>
             </div>
             <h2 className="arrowRight"> &rsaquo; </h2>
           </div>
           <form className="form" onSubmit={this.handleSubmit}>
-            <h3>Registration</h3>
+            <h3 className='orangeHeading'>Registration</h3>
 
             <h4>Full Name</h4>
             <input

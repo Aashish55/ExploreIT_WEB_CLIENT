@@ -88,13 +88,13 @@ class Login extends Component {
         <div className="section">
           <div className="leftPart">
             <div className="textArea">
-              <h1>ExploreIT</h1>
+              <h1 className='title'>ExploreIT</h1>
               <p className="secondary_text">Some Text Here...</p>
             </div>
             <h2 className="arrowRight">&rsaquo;</h2>
           </div>
           <form className="form" onSubmit={this.loginHandler}>
-            <h3>Login</h3>
+            <h3 className='orangeHeading'>Login</h3>
 
             <h4>Email</h4>
             <input

@@ -1,25 +1,296 @@
 [
     {
-        "name":"Panauti",
-        "description":"A sightseeing tour around Panauti with the host family is sure to interest travellers with various tastes. The women of Panauti have been able to generate extra income for their households through hosting guests, and have some control over their own money.",
-        "image":"",
-        "hotels":[
+        "name": "Panauti",
+        "description": "A sightseeing tour around Panauti with the host family is sure to interest travellers with various tastes. The women of Panauti have been able to generate extra income for their households through hosting guests, and have some control over their own money.",
+        "image": "",
+        "hotels": [
             {
-                "name":"Hotel Panauti",
-                "hotelDetails":"Hotel Panauti is really the only budget hotel option in what I found to be a charming authentic town, which is not on the list of tourist destinations. Family owned old hotel with friendly helpful staff. Room adequate with comfortable mattress. I took a day trip to Namo Buddha, which I highly recommend. I also took a local bus to visit a nearby silk farm, as well as an exploration of the old quaint neighborhoods."
+                "name": "Hotel Panauti",
+                "hotelDetails": "Hotel Panauti is really the only budget hotel option in what I found to be a charming authentic town, which is not on the list of tourist destinations. Family owned old hotel with friendly helpful staff. Room adequate with comfortable mattress. I took a day trip to Namo Buddha, which I highly recommend. I also took a local bus to visit a nearby silk farm, as well as an exploration of the old quaint neighborhoods."
             },
             {
-                "name":"Panauti Community Homestay",
-                "hotelDetails":"The Panauti community homestay programme is great place to stay in the small village of Panauti, with its beautiful temples, and to get to know the traditional culture from a local family's point of view. The room is cosy and authentic with its low ceilings. The family (mother and two daughters) are very friendly and helpful and the services, as well as the food, are good. We had a lot of fun and shared a lot of experience over a tiny cup of rice liquor. They showed me around Panauti, and we went on a full-day hike in the surrounding hills. Recommended"
+                "name": "Panauti Community Homestay",
+                "hotelDetails": "The Panauti community homestay programme is great place to stay in the small village of Panauti, with its beautiful temples, and to get to know the traditional culture from a local family's point of view. The room is cosy and authentic with its low ceilings. The family (mother and two daughters) are very friendly and helpful and the services, as well as the food, are good. We had a lot of fun and shared a lot of experience over a tiny cup of rice liquor. They showed me around Panauti, and we went on a full-day hike in the surrounding hills. Recommended"
             }
         ],
-        "adventures":{
-            "name":"Panauti-Namobuddha Trekking",
-            "adventureDetails":"We begin our day tour at 9 am after having breakfast. We drive to Panauti via Bhaktapur. It is about 32 km and takes one hour to reach there. It is scenic drive passing UNESCO World heritage site along with countryside. After exploring Panauti, we walk straight through the fertile valley then hike up leaving village through the beautiful rhododendron forest. The Namobuddha is a highly revered pilgrimage site where there is a cave, Tibetan monastery and a old stupa. After visiting, stupa, Tamang monastery, we further go to see Tibetan monastery then, we drive back to Kathmandu."
+        "adventures": [
+            {
+                "name": "Panauti-Namobuddha Trekking",
+                "adventureDetails": "We begin our day tour at 9 am after having breakfast. We drive to Panauti via Bhaktapur. It is about 32 km and takes one hour to reach there. It is scenic drive passing UNESCO World heritage site along with countryside. After exploring Panauti, we walk straight through the fertile valley then hike up leaving village through the beautiful rhododendron forest. The Namobuddha is a highly revered pilgrimage site where there is a cave, Tibetan monastery and a old stupa. After visiting, stupa, Tamang monastery, we further go to see Tibetan monastery then, we drive back to Kathmandu."
+            }
+        ],
+        "tours": [
+            {
+                "name": "Transport",
+                "tourDetails": "Panauti is tucked away in a side valley off the Arniko Hwy, about 7km south of Banepa. Buses run every 15 minutes between Panauti and Kathmandu’s Ratna Park bus station (Rs 70, 1½ to two hours); the last bus leaves Panauti at 5.30pm. For Dhulikhel you’ll have to change in Banepa (Rs 15, 20 minutes). It’s also possible to walk to Panauti from Dhulikhel (three to four hours), although the path now leads along a dusty road much of the way."
+            }
+        ]
+    },
+    {
+        "name": "Bhotekoshi",
+        "description": "Thril and exictement full sports bungy jumpoing",
+        "image": "",
+        "hotels": [
+            {
+                "name": "The Last Resort",
+                "hotelDetails": "The Last Resort in Nepal is set amidst sprawling terraced slopes, suspended on a high cliff-top gorge above the wild Bhote Kosi River and surrounded by dense jungle and pristine forest. Uniquely crafted in local stone, wood and slate, the resort has an intimate dining hall with centuries old wood-carving where delicious home style food is served."
+            }
+        ],
+        "adventures": [
+            {
+                "name": "BUngy Jump",
+                "adventureDetails": "Bungee Jump in Bhotekoshi is ranked among one of the world’s longest Bungee Jumps. It’s Asia’s 3rd highest Bungy jumping site."
+            }
+        ],
+        "tours": [
+            {
+                "name": "Transport",
+                "tourDetails": "Private Vechile"
+            }
+        ]
+    },
+    {
+        "name": "Pokhara",
+        "description": "Most visitors to Pokhara stop here before starting or after finishing the Round Annapurana trekking route. Because of its popularity with travelers, the city itself has relatively modern hotels and restaurants, but you’ll also find ancient lakes, waterfalls and gorges, and, of course, majestic views of the Himalayan Mountains.",
+        "image": "",
+        "hotels": [
+            {
+                "name": "Three Jewels Boutique Hotel",
+                "hotelDetails": "We choose the name “Three Jewels” because it represented the heart of Buddhism, i.e. the Buddha, the Dharma, and the Sangha; as these were also the values our forefather lived by. Today it is in the same spirit of Dharmic service, we commit to representing the Three Jewels Boutique Hotel. Om Mane Padme Hum."
+            },
+            {
+                "name": "Hotel Middle Path & Spa",
+                "hotelDetails": "Hotel middle path & Spa is one of the best service oriented Boutique Hotel for medium range budget traveler, Located in the center point of Lake side and just 5-minute walk to all the shops and restaurant around the Lake."
+            }
+        ],
+        "adventures": [
+            {
+                "name": "Paragliding",
+                "adventureDetails": "Fly with some of the most experience and professional pilots in the world , in the open sky of the Himalayas."
+            },
+            {
+                "name": "Boating",
+                "adventureDetails": "Adventure Boating Arround The fewa lake Is a ver intresting sports."
+            }
+        ],
+        "tours": [
+            {
+                "name": "Transport",
+                "tourDetails": "A flight ot pokakara is available from kathmandu or there are many busses and micros available from kathmandu"
+            }
+        ]
+    },
+    {
+        "name": "Dhulikhel",
+        "description": "Dhulikhel Municipality is a major part of the Kathmandu Valley Cultural Trekking Trail. This five-day trail provides a short trek with himalayas in the background and passes showcases a number of cultural highlights and rich biodiversity.",
+        "image": "",
+        "hotels": [
+            {
+                "name": "Mount Princess Hotel",
+                "hotelDetails": "Mount Princess Hotel features a restaurant, bar and free WiFi throughout the property. All rooms feature a kitchenette and a private bathroom. Every room is equipped with a balcony with mountain views."
+            },
+            {
+                "name": "Vishuddhi Alaya",
+                "hotelDetails": "Vishuddhi Alaya in Dhulikhel features a garden and a terrace. Among the facilities of this property are a restaurant, a 24-hour front desk and room service, along with free WiFi. There is free private parking and the property provides paid airport shuttle service."
+            }
+        ],
+        "adventures": [
+            {
+                "name": "Zipline",
+                "adventureDetails": " This activity is for the adventure seekers who are willing to bear any thrills intake.You can view amazing landscapes, mountain views and exciting forests throughout the zipline. The ropeway creates a 1.1 km length and 73 meters of vertical drop. Depending on the person’s weight, the speed rises 60 – 90 km per hour. The zipline lasts 2 minutes and 20 seconds on average. So, don’t miss the flying experience into the air."
+            }
+        ],
+        "tours": [
+            {
+                "name": "Transport",
+                "tourDetails": "located 30 km eastern to kathmandu, there is availability of transporation any time from  5 am to 5 pm."
+            }
+        ]
+    },
+    {
+        "name": "Dhungkharka",
+        "description": "Dhungkharka in Central Region (region) is a city in Nepal - about 16 mi (or 26 km) South-East of Kathmandu, the country's capital city",
+        "image": "",
+        "hotels": [
+            {
+                "name": "Dhunkharka Homestay",
+                "hotelDetails": "Afforadbale rate and typical nepali mud house, Dhunkharka Homestay gives the feeling of living on own house"
+            }
+        ],
+        "adventures": [
+            {
+                "name": "Treking",
+                "adventureDetails": "A 3-4 hour trek to  naraythan from the homestay gives lead to hevenly Bethachowk Narayanthan, the highest point of mahabaharat range arround 3000m."
+            }
+        ],
+        "tours": [
+            {
+                "name": "Transport",
+                "tourDetails": "Local Vechile are available from panauti at hourly basis. AND THERE IS  very easy way to reach to panauti from kathmandu"
+            }
+        ]
+    },
+    {
+        "name": "Muktinath",
+        "description": "Muktinath Temple is a sacred place both for Hindus and Buddhists located in Muktinath Valley at an altitude of 3,710 meters at the foot of the Thorong La pass, Mustang district, Nepal.",
+        "image": "",
+        "hotels": [
+            {
+                "name": "Hotel Grand Shambala",
+                "hotelDetails": "Hotel Grand Shambala Hotel, established in August 2015, is situated in a quiet side of Muktinatah Bazaar—the very religious, historical and touristic centre of Mustang. "
+            }
+        ],
+        "adventures": [
+            {
+                "name": "Treking",
+                "adventureDetails": "Muktinath Temple is located at an altitude of 3710 meters above sea level and situated 24 km northeast direction of Jomsom. Muktinath Mandir can also be reached after crossing Thorong-La mountain pass in the Annapurna Conservation Area, Mustang district of Nepal."
+            }
+        ],
+        "tours": [
+            {
+                "name": "Transport",
+                "tourDetails": "Helicopter , Jeep And Buses are available from Kathmandu"
+            }
+        ]
+    },
+    {
+        "name": "Sworgadwari",
+        "description": "Sworgadwari is a hilltop temple and pilgrimage site in Pyuthan District, Nepal, commemorating the special role of cows in Hinduism.",
+        "image": "",
+        "hotels": [
+            {
+                "name": "Ashram",
+                "hotelDetails": "No hotels nearby. There is temple ashram"
+            }
+        ],
+        "adventures": {
+            "name": "",
+            "adventureDetails": ""
         },
-        "tours":{
-            "name":"Transport",
-            "tourDetails":"Panauti is tucked away in a side valley off the Arniko Hwy, about 7km south of Banepa. Buses run every 15 minutes between Panauti and Kathmandu’s Ratna Park bus station (Rs 70, 1½ to two hours); the last bus leaves Panauti at 5.30pm. For Dhulikhel you’ll have to change in Banepa (Rs 15, 20 minutes). It’s also possible to walk to Panauti from Dhulikhel (three to four hours), although the path now leads along a dusty road much of the way."
-        }
+        "tours": [
+            {
+                "name": "Transport",
+                "tourDetails": " Bhalubang (Daang) –Bhingri-Swargadwari______Bhalubang is some 100kms west of Butwal or 360kms from Kathmandu on the East-West Mahendra Highway. You’ll get vehicles every time as this is the National Highway. Once you get down at Bhalubang, you’ll find direct buses to Swargadwari "
+            }
+        ]
+    },
+    {
+        "name": "Kalinchwok Bhagwati temple",
+        "description": "The religious temple of the Hindu goddess Kali, located in the GauriShankar conservation area is in the height of 3842m above the sea level.  You can see the breathtaking hills on the way, the gumbas and stupas can be visualized in the way and the beauty of our national flower laligurans (Rhododendron) and its varieties will be settled in your memories forever.",
+        "image": "",
+        "hotels": [
+            {
+                "name": "Kalinchowk Kasturi Lodge",
+                "hotelDetails": "Kalinchowk Kasturi Lodge is one of the hotels which is popular among travelers in terms of rate and facilities they serve. Hotel rooms are basic and the hotel staffs are very cooperative. You can enjoy the campfire in the hotel during the chilling weather condition along with different BBQ. "
+            },
+            {
+                "name": "Hotel Hilton ",
+                "hotelDetails": "Hotel Hilton can be your hospitality partner if you are looking for a cheap hotel in Kalinchowk. The rooms in the hotel are very basic and you feel almost staying in the home in the Hotel Hilton. Do not expect much from the hotel Hilton when you are planning to stay here"
+            }
+        ],
+        "adventures": [
+            {
+                "name": "Treking",
+                "adventureDetails": "The hike to Kalinchowk from Charikot will take about 7-8 hours depending upon the walking habit. "
+            }
+        ],
+        "tours": [
+            {
+                "name": "Transport",
+                "tourDetails": "Local buses are available from Buspark in Kathmandu. The buses leave early in the morning, with few shift starting from 6 am"
+            }
+        ]
+    },
+    {
+        "name": "Mardi High Camp Trek",
+        "description": "Mardi High Camp Trek could be another best short winter trek in Annapurna Region. Generally the Mardi Viewpoint and Base is the point of the trek but the views from Badal Danda and Mardi High Camp are incredible. ",
+        "image": "",
+        "hotels": [
+            {
+                "name": "Accommodation",
+                "hotelDetails": "The accommodation in the mountains are basic tea houses. The bedrooms are twin-share, no heating, no hot showers and basic toilets."
+            }
+        ],
+        "adventures": [
+            {
+                "name": "  Mardi himal Treking",
+                "adventureDetails": "The trail goes along small winding paths, through magical rhododendron forests until you climb out of the forest at an elevation around 3,300 m. The landscape changes quite abruptly into a rugged high mountain landscape, with amazing views of Mardi Himal, Machapuchre, Annapurna South and Hiunchuli."
+            }
+        ],
+        "tours": [
+            {
+                "name": "Transport",
+                "tourDetails": "Flight or Bus from Kathmandu - Pokhara then   drive to Kande and exiciting trek to Pitam-Deurali "
+            }
+        ]
+    },
+    {
+        "name": "Mustang",
+        "description": "Mustang, formerly Kingdom of Lo, is a remote and isolated region of the Nepalese Himalayas. The Upper Mustang was a restricted demilitarized area until 1992 which makes it one of the most preserved regions in the world, with a majority of the population still speaking traditional Tibetic languages.",
+        "image": "",
+        "hotels": [
+            {
+                "name": "Accommodation",
+                "hotelDetails": "The accommodation  are basic tea houses. The bedrooms are twin-share, no heating, no hot showers and basic toilets."
+            }
+        ],
+        "adventures": [
+            {
+                "name": "Upper Mustang trek",
+                "adventureDetails": "The Upper Mustang trek brings you into the hidden world of the old Buddhist kingdom of Mustang, also called Lo. Lo used to be part of the Tibetan empire and is therefore closely tied to Tibet in culture, language and geography"
+            }
+        ],
+        "tours": [
+            {
+                "name": "Transport",
+                "tourDetails": "Private Vechile or Jeep in rent"
+            }
+        ]
+    },
+    {
+        "name": "Muldai Khopra Danda ",
+        "description": "The Khayer Lake from Khopra Danda is not possible because it takes almost a whole day from Khopra Danda and also it's icy and slippery. Muldai is another beautiful viewpoint on this trek besides of Khopra Danda. For this trek, we need to confirm before with the community lodges in Mid Winter. ",
+        "image": "",
+        "hotels": [
+            {
+                "name": "Khopra community lodge",
+                "hotelDetails": "Afforadbale rate and typical nepali  house,  gives the feeling of living on own house"
+            }
+        ],
+        "adventures": [
+            {
+                "name": "Muldai Khopra Danda Trek",
+                "adventureDetails": "Muldai Viewpoint Khopra Trek is another short Trek in Annapurna Region which is perfect during the winter who wants to enjoy the closer view of snowy Himalayas. The elevation of the trek is about 3640M"
+            }
+        ],
+        "tours": [
+            {
+                "name": "Transport",
+                "tourDetails": "Buses are available to ghandruk from pokhara, Then There is exiciting trek all along"
+            }
+        ]
+    },
+    {
+        "name": "Gokyo Lakes",
+        "description": "Gokyo Lakes are oligotrophic lakes in Nepal's Sagarmatha National Park, located at an altitude of 4,700–5,000 m above sea level. These lakes are the world's highest freshwater lake system comprising six main lakes, of which Thonak Lake is the largest. ",
+        "image": "",
+        "hotels": [
+            {
+                "name": "Accommodation",
+                "hotelDetails": "The accommodation in the mountains are basic tea houses. The bedrooms are twin-share, no heating, no hot showers and basic toilets."
+            }
+        ],
+        "adventures": [
+            {
+                "name": "Gokyo Lakes",
+                "adventureDetails": "Trekking to Gokyo Lakes begins with an exciting spine-tingling flight to Lukla from Kathmandu. The trek then goes ahed to Namche, Thame and khumjung having spectacular views of Mt. Everest, Cho Oyu, Lhotse, Makalu and many more other Khumbu Himalayan glaciers. This is the most demanding trek after Everest Base Camp trek in the world. Every year thousands of trekkers flock to Gokyo Lake for a memorable adventure"
+            }
+        ],
+        "tours": [
+            {
+                "name": "Transport",
+                "tourDetails": "Flight are availabe to lukla from kathmandu and them there is adventorous trekking all along."
+            }
+        ]
     }
 ]

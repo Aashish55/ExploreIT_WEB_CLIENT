@@ -4,7 +4,9 @@ import styled from "styled-components";
 import AppBar from "./Appbar/Appbar";
 import SearchBar from "./UI/SearchBar/SearchBar";
 import PlaceDescription from "./UI/PlaceDescription/PlaceDescription";
-import photo from "../images/adventure.jpg";
+import panauti from "../images/panauti.jpg";
+import adventure from "../images/adventure.jpg";
+import data from "../Data/staticData.json";
 
 const Homepage = styled.div`
   background-color: white;
@@ -26,11 +28,15 @@ const Description = styled.div`
   width: 50%;
   height: 100vh;
   overflow-x: hidden;
+  overflow-y auto;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  background: linear-gradient(134.73deg, #c54409 0%, #f6763c 98.01%);
+  background: #c54409;
   box-shadow: 4px 0px 4px rgba(0, 0, 0, 0.25);
   border-radius: 40px 0px 0px 40px;
+
+  display: flex;
+  flex-direction:column;
 `;
 const RecomendationText = styled.h4`
   text-align: left;
@@ -69,7 +75,7 @@ const Card = styled.div`
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  background-image: url(${photo});
+  background-image: url(${(props) => props.img});
   background-size: cover;
   background-position: center;
 `;
@@ -90,14 +96,25 @@ class Home extends Component {
   state = {
     user: this.props.currentUser,
     cardClicked: false,
+    places: data,
+    placeDetails: null,
   };
 
-  cardClickHandler=()=>{
-    this.setState({cardClicked:true});
-  }
+  cardClickHandler = (place) => {
+    this.setState({ cardClicked: true, placeDetails: place });
+  };
+
+  sendImage = (name) => {
+    if (name === "Panauti") {
+      return panauti;
+    } else {
+      return adventure;
+    }
+  };
 
   render() {
-    const { cardClicked } = this.state;
+    const { cardClicked, places, placeDetails } = this.state;
+
     return (
       <Homepage>
         <Main>
@@ -105,25 +122,35 @@ class Home extends Component {
           <CenterRow>
             <SearchBar />
           </CenterRow>
-          <RecomendationText>Our Recommendation</RecomendationText>
+          {places.length > 0 ? (
+            <RecomendationText> Our Recomendation </RecomendationText>
+          ) : (
+            <Center>
+              <RecomendationText>
+                Sorry, there are currently no data found.
+              </RecomendationText>
+            </Center>
+          )}
           <Destinations>
-            <Card onClick={this.cardClickHandler}>
-              <PlaceName>Dhulikhel</PlaceName>
-            </Card>
-            <Card onClick={this.cardClickHandler}>
-              <PlaceName>Chitwan</PlaceName>
-            </Card>
-            <Card onClick={this.cardClickHandler}>
-              <PlaceName>Panuati</PlaceName>
-            </Card>
+            {places.length > 0
+              ? places.map((place) => (
+                  <Card
+                    key={place.name}
+                    img={this.sendImage(place.name)}
+                    onClick={() => this.cardClickHandler(place)}
+                  >
+                    <PlaceName>{place.name}</PlaceName>
+                  </Card>
+                ))
+              : null}
           </Destinations>
         </Main>
         <Description>
-          {cardClicked ? (
-            <PlaceDescription />
+          {cardClicked && placeDetails ? (
+            <PlaceDescription details={places} />
           ) : (
             <Center>
-              <h1>ExploreIT</h1>
+              <h1 className='title'>ExploreIT</h1>
             </Center>
           )}
         </Description>
