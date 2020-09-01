@@ -3,10 +3,22 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 import AppBar from "./Appbar/Appbar";
 import SearchBar from "./UI/SearchBar/SearchBar";
-import PlaceDescription from "./UI/PlaceDescription/PlaceDescription";
+// import PlaceDescription from "./UI/PlaceDescription/PlaceDescription";
+import data from "../Data/staticData.json";
+
 import panauti from "../images/panauti.jpg";
 import adventure from "../images/adventure.jpg";
-import data from "../Data/staticData.json";
+import bethanchowk from "../images/bethanchowk.jpg";
+import bhotekoshi from "../images/bhotekoshi.jpg";
+import dhulikhel from "../images/dhulikhel.jpg";
+import gokyo from "../images/gokyo.jpg";
+import kalinchowk from "../images/kalinchowk.jpg";
+import mardi from "../images/mardi.jpg";
+import muktinath from "../images/muktinath.jpg";
+import muldaikhopra from "../images/muldaikhopra.jpg";
+import mustang from "../images/mustang.jpg";
+import pokhara from "../images/pokhara.jpg";
+import sworgadwari from "../images/sworgadwari.jpg";
 
 const Homepage = styled.div`
   background-color: white;
@@ -92,12 +104,52 @@ const PlaceName = styled.div`
   background-image: linear-gradient(to bottom right, #ffb900, #ff7730);
 `;
 
+const DetailImage = styled.div`
+  height: 35rem;
+  width: 100%;
+  background-color: orange;
+  background-image: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(197, 68, 9, 0.5)
+    ),
+    url(${(props) => props.img});
+  background-size: cover;
+  background-position: center;
+`;
+const TextContainer = styled.div`
+  padding: 0 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: start;
+`;
+
+const Title = styled.div`
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 5rem;
+  color: white;
+  padding-bottom: 1rem;
+`;
+const PlaceDescription = styled.div`
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 2rem;
+  text-align: justify;
+  padding-bottom: 1rem;
+  color: white;
+`;
 class Home extends Component {
   state = {
     user: this.props.currentUser,
-    cardClicked: false,
     places: data,
     placeDetails: null,
+    cardKey: null,
   };
 
   cardClickHandler = (place) => {
@@ -107,13 +159,35 @@ class Home extends Component {
   sendImage = (name) => {
     if (name === "Panauti") {
       return panauti;
+    } else if (name === "Bhotekoshi") {
+      return bhotekoshi;
+    } else if (name === "Pokhara") {
+      return pokhara;
+    } else if (name === "Dhulikhel") {
+      return dhulikhel;
+    } else if (name === "Dhungkharka") {
+      return bethanchowk;
+    } else if (name === "Muktinath") {
+      return muktinath;
+    } else if (name === "Sworgadwari") {
+      return sworgadwari;
+    } else if (name === "Kalinchowk") {
+      return kalinchowk;
+    } else if (name === "Mardi") {
+      return mardi;
+    } else if (name === "Mustang") {
+      return mustang;
+    } else if (name === "Muldai Khopra") {
+      return muldaikhopra;
+    } else if (name === "Gokyo Lake") {
+      return gokyo;
     } else {
       return adventure;
     }
   };
 
   render() {
-    const { cardClicked, places, placeDetails } = this.state;
+    const { places, placeDetails } = this.state;
 
     return (
       <Homepage>
@@ -133,7 +207,7 @@ class Home extends Component {
           )}
           <Destinations>
             {places.length > 0
-              ? places.map((place) => (
+              ? places.map((place, i) => (
                   <Card
                     key={place.name}
                     img={this.sendImage(place.name)}
@@ -146,11 +220,19 @@ class Home extends Component {
           </Destinations>
         </Main>
         <Description>
-          {cardClicked && placeDetails ? (
-            <PlaceDescription details={places} />
+          {placeDetails ? (
+            <React.Fragment>
+              <DetailImage
+                img={this.sendImage(placeDetails.name)}
+              ></DetailImage>
+              <TextContainer>
+                <Title>{placeDetails.name}</Title>
+                <PlaceDescription>{placeDetails.description}</PlaceDescription>
+              </TextContainer>
+            </React.Fragment>
           ) : (
             <Center>
-              <h1 className='title'>ExploreIT</h1>
+              <h1 className="title">ExploreIT</h1>
             </Center>
           )}
         </Description>
