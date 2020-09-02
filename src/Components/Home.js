@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 import AppBar from "./Appbar/Appbar";
 import SearchBar from "./UI/SearchBar/SearchBar";
-// import PlaceDescription from "./UI/PlaceDescription/PlaceDescription";
+import LoginButtonLink from "./UI/LoginButonLink/LoginButtonLink";
 import data from "../Data/staticData.json";
 
 import panauti from "../images/panauti.jpg";
@@ -39,7 +39,7 @@ const Main = styled.div`
 const Description = styled.div`
   width: 50%;
   height: 100vh;
-  overflow:hidden;
+  overflow: hidden;
   overflow-y: auto;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
@@ -48,7 +48,7 @@ const Description = styled.div`
   border-radius: 40px 0px 0px 40px;
 
   display: flex;
-  flex-direction:column;
+  flex-direction: column;
 `;
 const RecomendationText = styled.h4`
   text-align: left;
@@ -61,9 +61,10 @@ const CenterRow = styled.div`
 `;
 const Center = styled.div`
   display: flex;
+  flex-direction:column;
   align-items: center;
   justify-content: center;
-  height: 100%;
+  height:100%;
 `;
 const Destinations = styled.div`
   display: flex;
@@ -107,22 +108,21 @@ const PlaceName = styled.div`
 const DetailImage = styled.div`
   height: 45rem;
   width: 100%;
-  
+
   background-color: orange;
-  background-image: 
-    linear-gradient(
+  background-image: linear-gradient(
       to bottom,
       transparent,
-      rgb(197, 68, 9, 0.5)
+      rgb(197, 68, 9, 0.25)
     ),
     url(${(props) => props.img});
   background-size: cover;
-  background-position: center;  
+  background-position: center;
 `;
 const TransparentText = styled.div`
-  background-color:transparent;
+  background-color: transparent;
   height: 45rem;
-  color:transparent;
+  color: transparent;
   width: 100%;
 `;
 const TextContainer = styled.div`
@@ -155,7 +155,7 @@ const PlaceDescription = styled.div`
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-style: normal;
-  font-weight: normal;
+  font-weight: 300;
   font-size: 2rem;
   text-align: justify;
   padding-bottom: 1rem;
@@ -238,57 +238,54 @@ class Home extends Component {
         </Main>
 
         <Description>
-        {placeDetails ? (
-          <React.Fragment>
-            <DetailImage img={this.sendImage(placeDetails.name)}>
-              <TransparentText>ExploreIT</TransparentText>
-            </DetailImage>
-            <TextContainer>
-              <Title>{placeDetails.name}</Title>
-              <PlaceDescription>{placeDetails.description}</PlaceDescription>
+          {placeDetails ? (
+            <React.Fragment>
+              <DetailImage img={this.sendImage(placeDetails.name)}>
+                <TransparentText>ExploreIT</TransparentText>
+              </DetailImage>
+              <TextContainer>
+                <Title>{placeDetails.name}</Title>
+                <PlaceDescription>{placeDetails.description}</PlaceDescription>
 
-              {placeDetails.hotels && placeDetails.hotels.length > 0
-                ? placeDetails.hotels.map((hotel,i) => (
-                    <React.Fragment key={i}>
-                      <Subtitle> {hotel.name} </Subtitle>
-                      <PlaceDescription>
-                        {hotel.hotelDetails}
-                      </PlaceDescription>
-                    </React.Fragment>
-                  ))
-                : null
-              }
-              {placeDetails.adventures && placeDetails.adventures.length > 0
-                ? placeDetails.adventures.map((adventure,i) => (
-                    <React.Fragment key={i}>
-                      <Subtitle> {adventure.name} </Subtitle>
-                      <PlaceDescription>
-                        {adventure.adventureDetails}
-                      </PlaceDescription>
-                    </React.Fragment>
-                  ))
-                : null
-              }
-              {placeDetails.tours && placeDetails.tours.length > 0
-                ? placeDetails.tours.map((tour,i) => (
-                    <React.Fragment key={i}>
-                      <Subtitle> {tour.name} </Subtitle>
-                      <PlaceDescription>
-                        {tour.tourDetails}
-                      </PlaceDescription>
-                    </React.Fragment>
-                  ))
-                : null
-              }
-            </TextContainer>
-          </React.Fragment>
-        ) : (
-          
+                {placeDetails.hotels && placeDetails.hotels.length > 0
+                  ? placeDetails.hotels.map((hotel, i) => (
+                      <React.Fragment key={i}>
+                        <Subtitle> {hotel.name} </Subtitle>
+                        <PlaceDescription>
+                          {hotel.hotelDetails}
+                        </PlaceDescription>
+                      </React.Fragment>
+                    ))
+                  : null}
+                {placeDetails.adventures && placeDetails.adventures.length > 0
+                  ? placeDetails.adventures.map((adventure, i) => (
+                      <React.Fragment key={i}>
+                        <Subtitle> {adventure.name} </Subtitle>
+                        <PlaceDescription>
+                          {adventure.adventureDetails}
+                        </PlaceDescription>
+                      </React.Fragment>
+                    ))
+                  : null}
+                {placeDetails.tours && placeDetails.tours.length > 0
+                  ? placeDetails.tours.map((tour, i) => (
+                      <React.Fragment key={i}>
+                        <Subtitle> {tour.name} </Subtitle>
+                        <PlaceDescription>{tour.tourDetails}</PlaceDescription>
+                      </React.Fragment>
+                    ))
+                  : null}
+              </TextContainer>
+              <CenterRow>
+                <LoginButtonLink />
+              </CenterRow>
+            </React.Fragment>
+          ) : (
             <Center>
               <h1 className="title">ExploreIT</h1>
+              <LoginButtonLink />
             </Center>
-         
-        )}
+          )}
         </Description>
       </Homepage>
     );
