@@ -13,6 +13,7 @@ import jwt from 'jsonwebtoken';
 import Login from './Components/Auth/Login'
 import Registration from './Components/Auth/Registration'
 import Home from './Components/Home';
+import Homepage from './Components/Homepage/Homepage';
 import Spinner from './Components/Spinner/Spinner';
 
 const store = createStore(rootReducer, composeWithDevTools())
@@ -23,9 +24,9 @@ class Root extends Component {
     if (localStorage.jwtToken) {
       setAuthorization(localStorage.jwtToken)
       this.props.setUser(jwt.decode(localStorage.jwtToken));
-      this.props.history.push('/')
+      this.props.history.push('/booking')
     }else{
-      this.props.history.push('/login')
+      this.props.history.push('/')
       this.props.clearUser();
     }
   }
@@ -36,6 +37,7 @@ class Root extends Component {
         <Route exact path='/' component={Home} />
         <Route path='/login' component={Login} />
         <Route path='/registration' component={Registration} />
+        <Route path='/booking' component={Homepage} />
       </Switch>
     );
   }
