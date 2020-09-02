@@ -20,8 +20,12 @@ const Searchbar = styled.input`
 class SearchBar extends Component {
     state = {  }
     render() { 
+        const { handleSearchChange } = this.props;
         return (
-            <Searchbar type = 'text' placeholder='Discover places...' />
+            <Searchbar type = 'text' 
+            onChange={handleSearchChange}
+            name='searchTerm' 
+            placeholder='Discover places...' />
         );
     }
 }

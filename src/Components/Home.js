@@ -167,6 +167,8 @@ class Home extends Component {
     places: data,
     placeDetails: null,
     cardKey: null,
+    searchTerm: '',
+    searchResults: []
   };
 
   cardClickHandler = (place) => {
@@ -203,15 +205,34 @@ class Home extends Component {
     }
   };
 
+  handleSearchChange = event => {
+    this.setState({
+      searchTerm: event.target.value,
+    }, () => this.handleSearchPlaces())
+  }
+
+  handleSearchPlaces = () => {
+    const places = [...this.state.places];
+    const regex = new RegExp(this.state.searchTerm, 'gi');
+    const searchResults = places.reduce((acc, place) => {
+      if (place.name && place.name.match(regex)) {
+        acc.push(place)
+      }
+      return acc;
+    }, [])
+    this.setState({ searchResults })
+    // setTimeout(() => this.setState({ searchLoading: false }), 1000)
+  }
+
   render() {
-    const { places, placeDetails } = this.state;
+    const { places, placeDetails, searchResults } = this.state;
 
     return (
       <Homepage>
         <Main>
           <AppBar />
           <CenterRow>
-            <SearchBar />
+            <SearchBar handleSearchChange={this.handleSearchChange} />
           </CenterRow>
           {places.length > 0 ? (
             <RecomendationText> Our Recomendation </RecomendationText>
@@ -223,7 +244,17 @@ class Home extends Component {
             </Center>
           )}
           <Destinations>
-            {places.length > 0
+            {searchResults.length>0?
+              searchResults.map((place, i) => (
+                <Card
+                  key={place.name}
+                  img={this.sendImage(place.name)}
+                  onClick={() => this.cardClickHandler(place)}
+                >
+                  <PlaceName>{place.name}</PlaceName>
+                </Card>
+              )):
+              places.length > 0
               ? places.map((place, i) => (
                   <Card
                     key={place.name}
