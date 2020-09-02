@@ -39,7 +39,11 @@ class Login extends Component {
           window.location.reload();
         })
         .catch((error) => {
+          let errors = [];
+          let errorData;
           console.log(error);
+          errorData = { message: "Incorrect data. Provide valid info." };
+          this.setState({ errors: errors.concat(errorData) });
         });
     }
   };

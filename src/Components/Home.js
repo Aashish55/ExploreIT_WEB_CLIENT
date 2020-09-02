@@ -91,6 +91,11 @@ const Card = styled.div`
   background-image: url(${(props) => props.img});
   background-size: cover;
   background-position: center;
+  transition: all .2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 `;
 const PlaceName = styled.div`
   color: white;
