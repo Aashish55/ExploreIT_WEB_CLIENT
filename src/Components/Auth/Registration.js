@@ -3,6 +3,16 @@ import "./style.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Notification from "../Notification/Notification";
+import styled from 'styled-components';
+import { BeatLoader } from 'react-spinners';
+
+const SubmitText = styled.h4`
+  color:white;
+  line-height:1rem;
+  font-size:2rem;
+  font-weight:600;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+`;
 
 class Registration extends Component {
   state = {
@@ -19,6 +29,7 @@ class Registration extends Component {
     longitude: null,
     errors: [],
     top: -100,
+    loading:false
   };
 
   componentDidMount() {
@@ -39,7 +50,7 @@ class Registration extends Component {
     event.preventDefault();
     if (this.isFormValid()) {
       console.log("ready to post");
-      this.setState({ errors: [] });
+      this.setState({ errors: [],loading:true });
 
       const registrationData = {
         name: this.state.fullName,
@@ -63,13 +74,14 @@ class Registration extends Component {
           console.log(response.data);
           this.showNotification();
           this.clearDataFields();
+          this.setState({loading:false});
         })
         .catch((error) => {
           let errors = [];
           let errorData;
           console.log(error);
-          errorData = { message: "Incorrect Data. Provide valid info." };
-          this.setState({ errors: errors.concat(errorData) });
+          errorData = { message: "Incorrect data. Provide valid info." };
+          this.setState({ errors: errors.concat(errorData), loading:false });
         });
     }
   };
@@ -174,6 +186,7 @@ class Registration extends Component {
       passwordConfirmation,
       errors,
       top,
+      loading
     } = this.state;
 
     return (
@@ -292,8 +305,11 @@ class Registration extends Component {
               </div>
             )}
 
-            <button onClick={this.handleSubmit} className="submit">
-              Sign Up
+            <button onClick={this.handleSubmit} disabled={loading} className="submit">
+            {loading?
+              <BeatLoader size={10} color='white' loading/> :
+              <SubmitText>Sign up</SubmitText>
+              } 
             </button>
 
             <p className="switch_text">

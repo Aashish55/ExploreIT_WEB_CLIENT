@@ -1,11 +1,21 @@
 import React, { Component } from "react";
 import "./style.css";
 import { Link } from "react-router-dom";
+import { BeatLoader } from "react-spinners";
 import axios from "axios";
 import Notification from "../Notification/Notification";
 import { setAuthorization } from "../../utils/setAuthorization";
 import { connect } from "react-redux";
 import { setUser } from "../../action/index";
+import styled from 'styled-components';
+
+const SubmitText = styled.h4`
+  color:white;
+  line-height:1rem;
+  font-size:2rem;
+  font-weight:600;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+`;
 
 class Login extends Component {
   state = {
@@ -13,13 +23,14 @@ class Login extends Component {
     password: "",
     errors: [],
     top: -100,
+    loading: false,
   };
 
   loginHandler = (event) => {
     event.preventDefault();
     if (this.isFormValid()) {
       console.log("ready to login");
-      this.setState({ errors: [] });
+      this.setState({ errors: [], loading: true });
 
       const loginData = {
         loginInfo: this.state.email,
@@ -36,6 +47,7 @@ class Login extends Component {
           const token = response.data.token;
           localStorage.setItem("jwtToken", token);
           setAuthorization(token);
+          this.setState({ loading: false });
           window.location.reload();
         })
         .catch((error) => {
@@ -43,7 +55,7 @@ class Login extends Component {
           let errorData;
           console.log(error);
           errorData = { message: "Incorrect data. Provide valid info." };
-          this.setState({ errors: errors.concat(errorData) });
+          this.setState({ errors: errors.concat(errorData), loading: false });
         });
     }
   };
@@ -85,20 +97,20 @@ class Login extends Component {
     ));
 
   render() {
-    const { email, password, errors, top } = this.state;
+    const { email, password, errors, top, loading } = this.state;
 
     return (
       <React.Fragment>
         <div className="section">
           <div className="leftPart">
             <div className="textArea">
-              <h1 className='title'>ExploreIT</h1>
+              <h1 className="title">ExploreIT</h1>
               <p className="secondary_text">Some Text Here...</p>
             </div>
             <h2 className="arrowRight">&rsaquo;</h2>
           </div>
           <form className="form" onSubmit={this.loginHandler}>
-            <h3 className='orangeHeading'>Login</h3>
+            <h3 className="orangeHeading">Login</h3>
 
             <h4>Email</h4>
             <input
@@ -125,8 +137,12 @@ class Login extends Component {
               </div>
             )}
 
-            <button className="submit" onClick={this.loginHandler}>
-              Login
+            <button className="submit" disabled={loading} onClick={this.loginHandler}>
+            {loading?
+              <BeatLoader size={10} color='white' loading/> :
+              <SubmitText>Login</SubmitText>
+              }   
+            
             </button>
 
             <p className="switch_text">
