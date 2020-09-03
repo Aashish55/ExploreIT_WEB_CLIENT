@@ -25,15 +25,22 @@ const Homepage = styled.div`
   height: 100vh;
   display: flex;
   justify-content: center;
+
+  @media only screen and (max-width: 550px) {
+    flex-direction:column;
+  }
 `;
 
 const Main = styled.div`
   width: 50%;
   position: relative;
   overflow: hidden;
-
   display: flex;
   flex-direction: column;
+
+  @media only screen and (max-width: 550px) {
+    width:100%;
+  }
 `;
 
 const Description = styled.div`
@@ -46,9 +53,13 @@ const Description = styled.div`
   background: #c54409;
   box-shadow: 4px 0px 4px rgba(0, 0, 0, 0.25);
   border-radius: 40px 0px 0px 40px;
-
   display: flex;
   flex-direction: column;
+
+  @media only screen and (max-width: 550px) {
+    width:100%;
+    border-radius: 40px 40px 0px 0px;
+  }
 `;
 const RecomendationText = styled.h4`
   text-align: left;
@@ -61,17 +72,17 @@ const CenterRow = styled.div`
 `;
 const Center = styled.div`
   display: flex;
-  flex-direction:column;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  height:100%;
+  height: 100%;
 `;
 const Destinations = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
   justify-content: space-evenly;
-  flex-grow: 1;
+  flex-grow:1;
   width: 100%;
   overflow: auto;
 `;
@@ -91,7 +102,7 @@ const Card = styled.div`
   background-image: url(${(props) => props.img});
   background-size: cover;
   background-position: center;
-  transition: all .2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 
   &:hover {
     transform: scale(1.1);
@@ -172,8 +183,8 @@ class Home extends Component {
     places: data,
     placeDetails: null,
     cardKey: null,
-    searchTerm: '',
-    searchResults: []
+    searchTerm: "",
+    searchResults: [],
   };
 
   cardClickHandler = (place) => {
@@ -210,24 +221,27 @@ class Home extends Component {
     }
   };
 
-  handleSearchChange = event => {
-    this.setState({
-      searchTerm: event.target.value,
-    }, () => this.handleSearchPlaces())
-  }
+  handleSearchChange = (event) => {
+    this.setState(
+      {
+        searchTerm: event.target.value,
+      },
+      () => this.handleSearchPlaces()
+    );
+  };
 
   handleSearchPlaces = () => {
     const places = [...this.state.places];
-    const regex = new RegExp(this.state.searchTerm, 'gi');
+    const regex = new RegExp(this.state.searchTerm, "gi");
     const searchResults = places.reduce((acc, place) => {
       if (place.name && place.name.match(regex)) {
-        acc.push(place)
+        acc.push(place);
       }
       return acc;
-    }, [])
-    this.setState({ searchResults })
+    }, []);
+    this.setState({ searchResults });
     // setTimeout(() => this.setState({ searchLoading: false }), 1000)
-  }
+  };
 
   render() {
     const { places, placeDetails, searchResults } = this.state;
@@ -249,17 +263,17 @@ class Home extends Component {
             </Center>
           )}
           <Destinations>
-            {searchResults.length>0?
-              searchResults.map((place, i) => (
-                <Card
-                  key={place.name}
-                  img={this.sendImage(place.name)}
-                  onClick={() => this.cardClickHandler(place)}
-                >
-                  <PlaceName>{place.name}</PlaceName>
-                </Card>
-              )):
-              places.length > 0
+            {searchResults.length > 0
+              ? searchResults.map((place, i) => (
+                  <Card
+                    key={place.name}
+                    img={this.sendImage(place.name)}
+                    onClick={() => this.cardClickHandler(place)}
+                  >
+                    <PlaceName>{place.name}</PlaceName>
+                  </Card>
+                ))
+              : places.length > 0
               ? places.map((place, i) => (
                   <Card
                     key={place.name}
