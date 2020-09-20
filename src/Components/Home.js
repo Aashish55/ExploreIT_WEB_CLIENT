@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
 import styled from "styled-components";
 import AppBar from "./Appbar/Appbar";
 import SearchBar from "./UI/SearchBar/SearchBar";
@@ -30,7 +29,6 @@ const Homepage = styled.div`
     flex-direction:column;
   }
 `;
-
 const Main = styled.div`
   width: 50%;
   position: relative;
@@ -42,7 +40,6 @@ const Main = styled.div`
     width:100%;
   }
 `;
-
 const Description = styled.div`
   width: 50%;
   height: 100vh;
@@ -86,7 +83,6 @@ const Destinations = styled.div`
   width: 100%;
   overflow: auto;
 `;
-
 const Card = styled.div`
   height: 30rem;
   width: 22rem;
@@ -120,7 +116,6 @@ const PlaceName = styled.div`
   transform: translateY(1rem) rotate(-8deg);
   background-image: linear-gradient(to bottom right, #ffb900, #ff7730);
 `;
-
 const DetailImage = styled.div`
   height: 45rem;
   width: 100%;
@@ -148,7 +143,6 @@ const TextContainer = styled.div`
   align-items: flex-start;
   justify-content: start;
 `;
-
 const Title = styled.div`
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
@@ -177,9 +171,10 @@ const PlaceDescription = styled.div`
   padding-bottom: 1rem;
   color: white;
 `;
+
+
 class Home extends Component {
   state = {
-    user: this.props.currentUser,
     places: data,
     placeDetails: null,
     cardKey: null,
@@ -342,8 +337,4 @@ class Home extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  currentUser: state.user.currentUser,
-});
-
-export default connect(mapStateToProps)(Home);
+export default Home;
