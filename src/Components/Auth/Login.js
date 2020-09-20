@@ -141,7 +141,7 @@ class Login extends Component {
             {loading?
               <BeatLoader size={10} color='white' loading/> :
               <SubmitText>Login</SubmitText>
-              }   
+              }
             
             </button>
 
