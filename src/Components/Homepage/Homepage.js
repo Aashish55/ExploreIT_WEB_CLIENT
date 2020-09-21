@@ -53,8 +53,10 @@ const Feature = styled.div`
     background-color:#c54409;
     color:#ffffff;
   }
-  &:active{
+  &.active{
     width:80%;
+    background-color:#c54409;
+    color:#ffffff;
   }
 `;
 
@@ -63,9 +65,10 @@ class Homepage extends Component {
     user: this.props.currentUser,
     isLoading: false,
     features:['Hotels','Adventures','Travels'],
-    hotelActiveState:true,
-    adventureActiveState:false,
-    travelActiveState:false,
+    hotelsActiveState:true,
+    adventuresActiveState:false,
+    travelsActiveState:false,
+    activeClass:'hotels'
   };
 
   logoutHandler = () => {
@@ -80,22 +83,30 @@ class Homepage extends Component {
 
   featureClickHandler = feature => {
     if(feature==='Travels'){
-      this.setState({hotelActiveState:false,adventureActiveState:false, travelActiveState:true});
+      this.setState({hotelsActiveState:false,adventuresActiveState:false, travelsActiveState:true, activeClass:'travels'});
+      console.log(this.state);
     }else if(feature==='Adventures'){
-      this.setState({hotelActiveState:false,adventureActiveState:true, travelActiveState:false});
+      this.setState({hotelsActiveState:false,adventuresActiveState:true, travelsActiveState:false,activeClass:'adventures'});
+      console.log(this.state);
     }else{
-      this.setState({hotelActiveState:true,adventureActiveState:false, travelActiveState:false});
+      this.setState({hotelsActiveState:true,adventuresActiveState:false, travelsActiveState:false,activeClass:'hotels'});
+      console.log(this.state);
     }
   }
 
   render() {
-    const { user, isLoading, features } = this.state;
+    const { user, isLoading, features,activeClass} = this.state;
     return (
       <HomePageNavbar>
         <Info>{user.name.toUpperCase()}</Info>
         <Features>
           {features.map(feature=>(
-            <Feature key={feature} onClick={(feature)=>this.featureClickHandler} >{feature}</Feature>
+            <Feature
+              key={feature}
+              onClick={()=>this.featureClickHandler(feature)}
+              className={feature.toLowerCase()===activeClass?'active':null}>
+                {feature}
+            </Feature>
           ))}
         </Features>
         <Button isLoading={isLoading} logoutHandler={this.logoutHandler} />
