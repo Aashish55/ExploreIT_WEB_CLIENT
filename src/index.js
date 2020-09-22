@@ -1,57 +1,66 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import * as serviceWorker from './serviceWorker';
-import { BrowserRouter as Router, Switch, Route, withRouter } from 'react-router-dom';
-import { createStore } from 'redux';
-import { Provider, connect } from 'react-redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
-import rootReducer from './reducers';
-import { setUser, clearUser } from './action';
-import './index.css'
-import { setAuthorization } from './utils/setAuthorization';
-import jwt from 'jsonwebtoken';
-import Login from './Components/Auth/Login'
-import Registration from './Components/Auth/Registration'
-import Home from './Components/Home';
-import Homepage from './Components/Homepage/Homepage';
-import Spinner from './Components/Spinner/Spinner';
+import React, { useEffect } from "react";
+import ReactDOM from "react-dom";
+import * as serviceWorker from "./serviceWorker";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  withRouter,
+} from "react-router-dom";
+import { createStore } from "redux";
+import { Provider, connect } from "react-redux";
+import { composeWithDevTools } from "redux-devtools-extension";
+import rootReducer from "./reducers";
+import { setUser, clearUser } from "./action";
+import "./index.css";
+import { setAuthorization } from "./utils/setAuthorization";
+import jwt from "jsonwebtoken";
+import Login from "./Components/Auth/Login";
+import Registration from "./Components/Auth/Registration";
+import Home from "./Components/Home";
+import Booking from "./Components/Booking";
+import Spinner from "./Components/Spinner/Spinner";
 
-const store = createStore(rootReducer, composeWithDevTools())
+const store = createStore(rootReducer, composeWithDevTools());
 
-class Root extends Component {
-
-  componentDidMount() {
+const Root = (props) => {
+  useEffect(() => {
     if (localStorage.jwtToken) {
-      setAuthorization(localStorage.jwtToken)
-      this.props.setUser(jwt.decode(localStorage.jwtToken));
-      this.props.history.push('/booking')
-    }else{
-      this.props.history.push('/')
-      this.props.clearUser();
+      setAuthorization(localStorage.jwtToken);
+      props.setUser(jwt.decode(localStorage.jwtToken));
+      props.history.push("/booking");
+    } else {
+      props.history.push("/");
+      props.clearUser();
     }
-  }
+  }, []);
 
-  render() {
-    return  this.props.isLoading?<Spinner /> : (
-      <Switch>
-        <Route exact path='/' component={Home} />
-        <Route path='/login' component={Login} />
-        <Route path='/registration' component={Registration} />
-        <Route path='/booking' component={Homepage} />
-      </Switch>
-    );
-  }
-}
+  return props.isLoading ? (
+    <Spinner />
+  ) : (
+    <Switch>
+      <Route exact path="/" exact component={Home} />
+      <Route path="/login" exact component={Login} />
+      <Route path="/registration" exact component={Registration} />
+      <Route path="/booking" component={Booking} />
+    </Switch>
+  );
+};
 
-const mapStateFromProps = state => ({
-  isLoading: state.user.isLoading
-})
+const mapStateFromProps = (state) => ({
+  isLoading: state.user.isLoading,
+});
 
-const RootWithAuth = withRouter(connect(mapStateFromProps, { setUser, clearUser })(Root));
+const RootWithAuth = withRouter(
+  connect(mapStateFromProps, { setUser, clearUser })(Root)
+);
 
-ReactDOM.render(<Provider store={store}>
-  <Router>
-    <RootWithAuth />
-  </Router>
-</Provider>, document.getElementById('root'));
+ReactDOM.render(
+  <Provider store={store}>
+    <Router>
+      <RootWithAuth />
+    </Router>
+  </Provider>,
+  document.getElementById("root")
+);
 serviceWorker.unregister();
