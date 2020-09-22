@@ -2,8 +2,7 @@ import React from 'react';
 import styled, { keyframes } from 'styled-components';
 
 const SpinnerScreen = styled.div`
-    background-color:gray;
-    height:100vh;
+    margin:3rem;
     display:flex;
     flex-direction:column;
     align-items:center;
@@ -39,6 +38,8 @@ const Loading = styled.div`
 const LoadingText = styled.h3`
     color:white;
     font-weight:200;
+    font-size:2.5rem;
+    color:gray;
 `;
 
 const Spinner = () => (

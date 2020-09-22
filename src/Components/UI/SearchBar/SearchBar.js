@@ -12,9 +12,11 @@ const Searchbar = styled.input`
     background-position: left center;
     padding: 1rem 4.5rem;
     width: 85%;
+    height:5rem;
     outline: none;
     margin: 1.5rem 2rem;
     color: #888;
+    margin-bottom:3rem;
 `;
 
 class SearchBar extends Component {
