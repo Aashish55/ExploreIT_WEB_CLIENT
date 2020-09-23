@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import { Switch, Route } from "react-router-dom";
@@ -112,49 +112,6 @@ const Feature = styled.div`
     color: #ffffff;
   }
 `;
-const Card = styled.div`
-  height: 36rem;
-  width: 25rem;
-  margin: 1rem 0;
-  background-color: white;
-  border-radius: 3rem;
-  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.2);
-  overflow: hidden;
-  padding: 2rem;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  background-image: url(${(props) => props.img});
-  background-size: cover;
-  background-position: center;
-  transition: all 0.2s ease-in-out;
-
-  &:hover {
-    transform: scale(1.1);
-  }
-`;
-const PlaceName = styled.div`
-  color: white;
-  font-size: 2.5rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  font-family: -apple-system;
-  padding: 1rem 15rem;
-  -webkit-box-decoration-break: clone;
-  box-decoration-break: clone;
-  transform: translateY(1rem) rotate(-8deg);
-  background-image: linear-gradient(to bottom right, #ffb900, #ff7730);
-`;
-const MainContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  justify-content: space-evenly;
-  flex-grow: 1;
-  width: 100%;
-  overflow: auto;
-`;
-
 const mapStateToProps = (state) => ({
   currentUser: state.user.currentUser,
 });

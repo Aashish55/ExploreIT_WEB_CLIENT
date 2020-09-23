@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
-import Button from "../../../../../UI/Button/Button";
 import axios from "axios";
 import Spinner from "../../../../../Spinner/Spinner";
 import SearchBar from "../../../../../UI/SearchBar/SearchBar";
@@ -23,6 +22,7 @@ const Hotel = (props) => {
         setLoading(false);
       })
       .catch((error) => {
+        console.log(error);
         setLoading(false);
       });
   }, []);
@@ -39,14 +39,12 @@ const Hotel = (props) => {
           </Info>
         ) : (
           data.map((hotel) => (
-            <Card key={hotel.name} img={hotel.medias[0].heading}>
-              <PlaceName
-                onClick={() =>
-                  props.history.push(`/booking/hotel/${hotel._id}`)
-                }
-              >
-                {hotel.name}
-              </PlaceName>
+            <Card
+              key={hotel.name}
+              img={hotel.medias[0].heading}
+              onClick={() => props.history.push(`/booking/hotel/${hotel._id}`)}
+            >
+              <PlaceName>{hotel.name}</PlaceName>
             </Card>
           ))
         )}
@@ -55,10 +53,6 @@ const Hotel = (props) => {
   );
 };
 
-const HomepageContainer = styled.div`
-  display: flex;
-  background-color: #ffffff;
-`;
 const DataSection = styled.div`
   height: 100vh;
   width: 100%;
@@ -68,20 +62,6 @@ const DataSection = styled.div`
   flex-direction: column;
   align-items: center;
 `;
-const HomePageNavbar = styled.div`
-  background: linear-gradient(134.73deg, #c54409 0%, #f6763c 98.01%);
-  height: 100vh;
-  border-top-right-radius: 1rem;
-  border-bottom-right-radius: 1rem;
-  width: 40rem;
-  padding: 3rem;
-  margin-right: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  position: fixed;
-`;
 const Info = styled.h3`
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
@@ -90,37 +70,7 @@ const Info = styled.h3`
   color: #${(props) => props.color};
   padding-bottom: 1rem;
 `;
-const Features = styled.div`
-  margin: 2rem 0;
-  width: 90%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
 
-const Feature = styled.div`
-  width: 100%;
-  background-color: #ffffff;
-  color: #c54409;
-  margin: 1rem 0;
-  padding: 0.5rem;
-  font-size: 2.5rem;
-  text-align: center;
-  display: block;
-  border-top-right-radius: 1rem;
-  border-bottom-left-radius: 1rem;
-  cursor: pointer;
-  transition: all 0.2s linear;
-  &:hover {
-    background-color: #c54409;
-    color: #ffffff;
-  }
-  &.active {
-    width: 80%;
-    background-color: #c54409;
-    color: #ffffff;
-  }
-`;
 const Card = styled.div`
   height: 36rem;
   width: 25rem;
@@ -130,6 +80,7 @@ const Card = styled.div`
   box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.2);
   overflow: hidden;
   padding: 2rem;
+  cursor:pointer;
   display: flex;
   align-items: flex-end;
   justify-content: center;
