@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { Component } from "react";
 import styled from "styled-components";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import "./style.css";
+import axios from "axios";
+import Notification from "../../../../../Notification/Notification";
 
 const Container = styled.div`
   font-weight: 500;
@@ -39,10 +42,9 @@ const Subtitle = styled.div`
 `;
 
 const Buttons = styled.div`
-  width: 30%;
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
 `;
 const Button = styled.button`
   background-color: ${(props) => props.color};
@@ -56,104 +58,143 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
+class BookFormModal extends Component {
+  formSubmit = (event) => {
+    event.preventDefault();
+    if (this.isFormValid()) {
+      console.log("ready to book room");
+      this.setState({ errors: [] });
+      this.setState({ errors: [], loading: true });
+      console.log(this.state);
+      const bookingData = {
+        checkInDate: this.state.checkInDate,
+        checkOutDate: this.state.checkOutDate,
+        bookingInfo: [
+          {
+            room: this.state.roomID,
+            price: this.state.priceID,
+          },
+        ],
+      };
+      axios
+        .post(
+          "https://explore-it-hotel.herokuapp.com/api/v1/bookings",
+          bookingData,
+          {
+            headers: {
+              formapigateway: true,
+              exploreittoken: this.state.jwtToken,
+            },
+          }
+        )
+        .then((response) => {
+          console.log(response.data);
+          this.showNotification();
+          this.setState({ loading: false });
+        })
+        .catch((error) => {
+          let errors = [];
+          let errorData;
+          console.log(error);
+          errorData = { message: "Incorrect data. Provide valid info." };
+          this.setState({ errors: errors.concat(errorData), loading: false });
+        });
+    }
+  };
 
-
-const BookFormModal = (props) => {
-  const [checkInDate, setCheckInDate] = useState("");
-  const [checkOutDate, setCheckOutDate] = useState("");
-  const [errors, setErrors] = useState([]);
-
-
-  const formSubmit = (event) =>{
-      event.preventDefault();
-      if (isFormValid(checkInDate,checkOutDate)) {
-        console.log("ready to book room");
-        setErrors([]);
-  
-        
-        // axios
-        //   .post(
-        //     "https://explore-it-main.herokuapp.com/api/v1/users/login",
-        //     loginData
-        //   )
-        //   .then((response) => {
-        //     console.log(response.data);
-        //     this.showNotification();
-        //     const token = response.data.token;
-        //     localStorage.setItem("jwtToken", token);
-        //     setAuthorization(token);
-        //     this.setState({ loading: false });
-        //     window.location.reload();
-        //   })
-        //   .catch((error) => {
-        //     let errors = [];
-        //     let errorData;
-        //     console.log(error);
-        //     errorData = { message: "Incorrect data. Provide valid info." };
-        //     this.setState({ errors: errors.concat(errorData), loading: false });
-        //   });
-      }
-    };
-
-  const isFormValid = (date1, date2) => {
+  isFormValid = () => {
+    let errors = [];
     let error;
 
-    if (isFormEmpty(date1,date2)) {
+    if (this.isFormEmpty(this.state)) {
       error = { message: "Fill in all fields" };
-      console.log(date1+ "  " + date2);
-      setErrors(errors.concat(error));
+      this.setState({ errors: errors.concat(error) });
       return false;
     } else {
       return true;
     }
   };
 
-  const isFormEmpty = (dateIn, dateOut) => {
-    return !dateIn.length || !dateOut.length;
+  isFormEmpty = ({ checkInDate, checkOutDate }) => {
+    return !checkInDate.length || !checkOutDate.length;
   };
 
+  handleChangeCheckIn = (date) => {
+    const checkindate = `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`;
+    this.setState({ checkInDate: checkindate });
+  };
+  handleChangeCheckOut = (date) => {
+    const checkoutdate = `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`;
+    this.setState({ checkOutDate: checkoutdate });
+  };
 
-  return (
-    <Container show={props.modalStatus}>
-      <Name>{props.name}</Name>
-      <Subtitle>Room No: {props.room}</Subtitle>
-      <Subtitle>Price: {props.price}</Subtitle>
-      <form onSubmit={formSubmit}>
-      <DatePicker
-      selected={checkInDate}
-      onChange={(date) => setCheckInDate(date)}
-      dateFormat="yyyy-MM-dd"
-      minDate={new Date()}
-      placeholderText="Enter Check In Date"
-    />
-    <DatePicker
-      selected={checkOutDate}
-      onChange={(date) => setCheckOutDate(date)}
-      dateFormat="yyyy-MM-dd"
-      minDate={new Date()}
-      placeholderText="Enter Check Out Date"
-    />
-      {errors.length>0 && (
-          <Error>{
-              errors.map((error, i) => (
-                  <p key={i} className="errorMessage">
-                    {error.message}
-                  </p>
-                ))
-          }</Error>
-      )}
-    <Buttons>
-      <Button color={"green"} onClick={formSubmit}>Submit</Button>
-      <Button color={"red"} onClick={props.closeModal}>
-        Cancel
-      </Button>
-    </Buttons>
-      </form>
-    </Container>
-  );
-};
-const Error = styled.div`
-    font-size:2rem;
-    color:orange;
-`;
+  showNotification = () => {
+    this.setState({ top: -200 }, () => {
+      setTimeout(() => {
+        this.setState({ top: -500 });
+      }, 3000);
+    });
+  };
+
+  state = {
+    checkInDate: "",
+    checkOutDate: "",
+    roomID: this.props.roomID,
+    priceID: this.props.priceID,
+    jwtToken: localStorage.getItem("jwtToken"),
+    errors: [],
+    loading: false,
+    top: -500,
+  };
+  render() {
+    const { checkInDate, checkOutDate, errors, top } = this.state;
+    return (
+      <Container show={this.props.modalStatus}>
+        <Name>{this.props.name}</Name>
+        <Subtitle>Room No: " {this.props.room} "</Subtitle>
+        <Subtitle>Price: " {this.props.price} "</Subtitle>
+        <form onSubmit={this.formSubmit}>
+          <DatePicker
+            value={checkInDate}
+            onChange={(date) => this.handleChangeCheckIn(date)}
+            dateFormat="yyyy-MM-dd"
+            minDate={new Date()}
+            placeholderText="Enter Check In Date"
+          />
+          <DatePicker
+            value={checkOutDate}
+            onChange={(date) => this.handleChangeCheckOut(date)}
+            dateFormat="yyyy-MM-dd"
+            minDate={new Date()}
+            placeholderText="Enter Check Out Date"
+          />
+        </form>
+        {errors.length > 0 && (
+          <Error>
+            {errors.map((error, i) => (
+              <p key={i} className="errorMessage">
+                {error.message}
+              </p>
+            ))}
+          </Error>
+        )}
+        <Buttons>
+          <Button color={"green"} onClick={this.formSubmit}>
+            Submit
+          </Button>
+          <Button color={"red"} onClick={this.props.closeModal}>
+            Cancel
+          </Button>
+        </Buttons>
+        <Notification message={"Booking Successful."} topPosition={top} />
+      </Container>
+    );
+  }
+}
+
 export default BookFormModal;
+
+const Error = styled.div`
+  font-size: 2rem;
+  color: orange;
+`;
