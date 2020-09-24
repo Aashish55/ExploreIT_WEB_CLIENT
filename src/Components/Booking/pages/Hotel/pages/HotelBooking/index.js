@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
-import Spinner from '../../../../../Spinner/Spinner';
-import BookFormModal from './BookFormModal';
+import Spinner from "../../../../../Spinner/Spinner";
+import BookFormModal from "./BookFormModal";
 
 const HotelBooking = (props) => {
   const { hotelId } = props.match.params;
@@ -16,7 +16,6 @@ const HotelBooking = (props) => {
   const [roomID, setRoomID] = useState("");
   const [priceID, setPriceID] = useState("");
 
-  let roomPrice;
   useEffect(() => {
     setLoading(true);
     showModal(false);
@@ -37,14 +36,27 @@ const HotelBooking = (props) => {
   }, []);
 
   console.log(data);
+
+  const closeModal = () => {
+    showModal(false);
+  };
+
   return (
     <BookingInformation>
-    {modal?(
-      <Backdrop onClick={()=>showModal(false)}>
-        <BookFormModal name={name} room={room} price={price} modalStatus={modal} />
-      </Backdrop>
-    ):null}
-    
+      {modal ? (
+        <Backdrop>
+          <BookFormModal 
+            name={name}
+            room={room}
+            price={price}
+            priceID={priceID}
+            roomID={roomID}
+            modalStatus={modal}
+            closeModal={closeModal}
+          />
+        </Backdrop>
+      ) : null}
+
       {loading ? (
         <Spinner />
       ) : data.vendor.length === 0 ? null : (
@@ -75,19 +87,28 @@ const HotelBooking = (props) => {
                     Adult: {room.capacity.adult}, Children:{" "}
                     {room.capacity.child}
                   </RoomInfo>
-                  <PriceInfo>Rs.{room.prices.map(price=>(price.isCurrent?price.value:null)
-                  )}</PriceInfo>
-                  <BookButton onClick={()=>{
-                    showModal(true);
-                    const roomPrice = room.prices.map(price=>(price.isCurrent?price.value:null));
-                    const priceID = room.prices.map(price=>(price.isCurrent?price._id:null));
-                    setName(data.vendor[0].name);
-                    setRoom(room.roomNo);
-                    setRoomID(room._id);
-                    setPrice(roomPrice);
-                    setPriceID(priceID);
-                    
-                  }}>
+                  <PriceInfo>
+                    Rs.
+                    {room.prices.map((price) =>
+                      price.isCurrent ? price.value : null
+                    )}
+                  </PriceInfo>
+                  <BookButton
+                    onClick={() => {
+                      showModal(true);
+                      const roomPrice = room.prices.map((price) =>
+                        price.isCurrent ? price.value : null
+                      );
+                      const priceID = room.prices.map((price) =>
+                        price.isCurrent ? price._id : null
+                      );
+                      setName(data.vendor[0].name);
+                      setRoom(room.roomNo);
+                      setRoomID(room._id);
+                      setPrice(roomPrice);
+                      setPriceID(priceID);
+                    }}
+                  >
                     {room.booked ? "Reserved" : "Book Now"}
                   </BookButton>
                 </BookingCard>
@@ -210,7 +231,7 @@ const Backdrop = styled.div`
   position:absolute;
   left:0;
   top:0;
-  z-index;20;
+  z-index:200;
 `;
 
 export default HotelBooking;
