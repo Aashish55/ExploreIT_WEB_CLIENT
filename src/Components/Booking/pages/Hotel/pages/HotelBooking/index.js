@@ -35,7 +35,7 @@ const HotelBooking = (props) => {
       });
   }, []);
 
-  console.log(data);
+  //console.log(data);
 
   const closeModal = () => {
     showModal(false);
@@ -120,6 +120,7 @@ const HotelBooking = (props) => {
     </BookingInformation>
   );
 };
+
 
 const BookingInformation = styled.div`
   height: 100vh;

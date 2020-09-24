@@ -65,16 +65,14 @@ class BookFormModal extends Component {
       console.log("ready to book room");
       this.setState({ errors: [] });
       this.setState({ errors: [], loading: true });
-      console.log(this.state);
+      // console.log(this.state);
       const bookingData = {
         checkInDate: this.state.checkInDate,
         checkOutDate: this.state.checkOutDate,
-        bookingInfo: [
-          {
+        bookingInfo: [{
             room: this.state.roomID,
             price: this.state.priceID,
-          },
-        ],
+          }]
       };
       axios
         .post(
@@ -82,8 +80,8 @@ class BookFormModal extends Component {
           bookingData,
           {
             headers: {
-              formapigateway: true,
-              exploreittoken: this.state.jwtToken,
+              fromapigateway: true,
+              exploreItToken: localStorage.getItem("jwtToken"),
             },
           }
         )
@@ -140,7 +138,7 @@ class BookFormModal extends Component {
     checkInDate: "",
     checkOutDate: "",
     roomID: this.props.roomID,
-    priceID: this.props.priceID,
+    priceID: this.props.priceID[0],
     jwtToken: localStorage.getItem("jwtToken"),
     errors: [],
     loading: false,
