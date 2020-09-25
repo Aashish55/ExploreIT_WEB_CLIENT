@@ -61,7 +61,7 @@ const HotelBooking = (props) => {
         <Spinner />
       ) : data.vendor.length === 0 ? null : (
         <React.Fragment>
-          <DetailImage img={data.vendor[0].medias[0].heading} />
+          <DetailImage img={data.vendor[0].medias.length>0?data.vendor[0].medias[0].heading :"https://th.bing.com/th/id/OIP.47ICObjpjd-7KsKNNixBFAHaE-?pid=Api&rs=1"} />
           <DescriptionContainer>
             <Title>{data.vendor[0].name}</Title>
 

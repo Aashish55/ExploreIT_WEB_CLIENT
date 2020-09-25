@@ -27,6 +27,8 @@ const Hotel = (props) => {
       });
   }, []);
 
+  console.log(data)
+
   return (
     <DataSection>
       <SearchBar />
@@ -41,7 +43,7 @@ const Hotel = (props) => {
           data.map((hotel) => (
             <Card
               key={hotel.name}
-              img={hotel.medias[0].heading}
+              img={hotel.medias.length>0?hotel.medias[0].heading:"https://th.bing.com/th/id/OIP.47ICObjpjd-7KsKNNixBFAHaE-?pid=Api&rs=1"}
               onClick={() => props.history.push(`/booking/hotel/${hotel._id}`)}
             >
               <PlaceName>{hotel.name}</PlaceName>
