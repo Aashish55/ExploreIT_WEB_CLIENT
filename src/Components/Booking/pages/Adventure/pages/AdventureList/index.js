@@ -5,20 +5,20 @@ import axios from "axios";
 import Spinner from "../../../../../Spinner/Spinner";
 import SearchBar from "../../../../../UI/SearchBar/SearchBar";
 
-const Hotel = (props) => {
+const Adventures = (props) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState();
 
   useEffect(() => {
     setLoading(true);
     axios
-      .get("https://explore-it-hotel.herokuapp.com/api/v1/vendors/all", {
+      .get("https://explore-it-adventure.herokuapp.com/api/v1/adventures", {
         headers: {
           exploreittoken: localStorage.getItem("jwtToken"),
         },
       })
       .then((response) => {
-        setData(response.data.allVendors);
+        setData(response.data);
         setLoading(false);
       })
       .catch((error) => {
@@ -27,7 +27,7 @@ const Hotel = (props) => {
       });
   }, []);
 
-  //console.log(data)
+  //console.log(data);
 
   return (
     <DataSection>
@@ -40,13 +40,17 @@ const Hotel = (props) => {
             Sorry, there are no data available right now.
           </Info>
         ) : (
-          data.map((hotel) => (
+          data.map((adventure) => (
             <Card
-              key={hotel.name}
-              img={hotel.medias.length>0?hotel.medias[0].heading:"https://th.bing.com/th/id/OIP.47ICObjpjd-7KsKNNixBFAHaE-?pid=Api&rs=1"}
-              onClick={() => props.history.push(`/booking/hotel/${hotel._id}`)}
+              key={adventure._id}
+              img={
+                adventure.medias.length > 0
+                  ? adventure.medias[0].heading
+                  : "https://images.pexels.com/photos/1098365/pexels-photo-1098365.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+              }
+              onClick={() => props.history.push(`/booking/adventure/${adventure._id}`)}
             >
-              <PlaceName>{hotel.name}</PlaceName>
+              <PlaceName>{adventure.name}</PlaceName>
             </Card>
           ))
         )}
@@ -82,7 +86,7 @@ const Card = styled.div`
   box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.2);
   overflow: hidden;
   padding: 2rem;
-  cursor:pointer;
+  cursor: pointer;
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -121,4 +125,4 @@ const mapStateToProps = (state) => ({
   currentUser: state.user.currentUser,
 });
 
-export default connect(mapStateToProps)(Hotel);
+export default connect(mapStateToProps)(Adventures);
