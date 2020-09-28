@@ -2,12 +2,13 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
 import Spinner from "../../../../../Spinner/Spinner";
-import './style.css'
+import "./style.css";
 
 const AdventureBooking = (props) => {
   const { adventureId } = props.match.params;
   const [data, setData] = useState({ adventureVendor: [] });
   const [loading, setLoading] = useState();
+  const [description, setDescription] = useState(null);
 
   useEffect(() => {
     setLoading(true);
@@ -31,6 +32,7 @@ const AdventureBooking = (props) => {
   }, []);
 
   console.log(data);
+  console.log(description);
 
   return (
     <BookingInformation>
@@ -39,16 +41,35 @@ const AdventureBooking = (props) => {
       ) : data.adventureVendor.length === 0 ? null : (
         <React.Fragment>
           <DetailImage
-            img={"https://images.pexels.com/photos/1687845/pexels-photo-1687845.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"
+            img={
+              "https://images.pexels.com/photos/1687845/pexels-photo-1687845.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"
             }
           />
           <Container>
-          {data.adventureVendor.map(adventureVendor=>(
-            <BookButton key={adventureVendor._id} className={window.location.href.includes(`/booking/adventure/${adventureVendor._id}`) ? "active" : ""}>{adventureVendor.vendor.name}</BookButton>
-          ))}
+            {data.adventureVendor.map((adventureVendor) => (
+              <BookButton
+                key={adventureVendor._id}
+                className={
+                  window.location.href.includes(
+                    `/booking/adventure/${adventureVendor._id}`
+                  )
+                    ? "active"
+                    : ""
+                }
+                onClick={() =>
+                  setDescription(adventureVendor)
+                }
+              >
+                {adventureVendor.vendor.name}
+              </BookButton>
+            ))}
           </Container>
           <DescriptionContainer>
-            
+            {description=== null ? (
+              "Please select above vendors"
+            ) : (
+              <Title>{description.vendor.name}</Title>
+            )}
           </DescriptionContainer>
         </React.Fragment>
       )}
@@ -118,9 +139,9 @@ const BookingInformation = styled.div`
   align-items: center;
 `;
 const Container = styled.div`
-  width:100%;
-  padding:1rem 2rem;
-  margin:1rem 2rem;
+  width: 100%;
+  padding: 1rem 2rem;
+  margin: 1rem 2rem;
 `;
 const DescriptionContainer = styled.div`
   padding: 0 2rem;
@@ -211,7 +232,7 @@ const BookButton = styled.button`
   transition: all 0.2s ease-in;
   cursor: pointer;
   &:hover {
-    transform:rotate(-2deg) scale(1.1);
+    transform: rotate(-2deg) scale(1.1);
   }
   &.active {
     color: white;
