@@ -1,14 +1,36 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import "./styles.css";
 import styled from "styled-components";
 import Spinner from "../../../../../Spinner/Spinner";
-import "./style.css";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const AdventureBooking = (props) => {
   const { adventureId } = props.match.params;
   const [data, setData] = useState({ adventureVendor: [] });
   const [loading, setLoading] = useState();
   const [description, setDescription] = useState(null);
+  const [date, handleDate] = useState(new Date());
+  const day = date.getDay();
+
+  const Day = (dayFromDate) => {
+    if (dayFromDate === 0) {
+      return "SUNDAY";
+    } else if (dayFromDate === 1) {
+      return "MONDAY";
+    } else if (dayFromDate === 2) {
+      return "TUESDAY";
+    } else if (dayFromDate === 3) {
+      return "WEDNESDAY";
+    } else if (dayFromDate === 4) {
+      return "THURSDAY";
+    } else if (dayFromDate === 5) {
+      return "FRIDAY";
+    } else if (dayFromDate === 6) {
+      return "SATURDAY";
+    }
+  };
 
   useEffect(() => {
     setLoading(true);
@@ -33,6 +55,7 @@ const AdventureBooking = (props) => {
 
   console.log(data);
   console.log(description);
+  console.log(date);
 
   return (
     <BookingInformation>
@@ -56,19 +79,40 @@ const AdventureBooking = (props) => {
                     ? "active"
                     : ""
                 }
-                onClick={() =>
-                  setDescription(adventureVendor)
-                }
+                onClick={() => setDescription(adventureVendor)}
               >
                 {adventureVendor.vendor.name}
               </BookButton>
             ))}
           </Container>
           <DescriptionContainer>
-            {description=== null ? (
-              "Please select above vendors"
+            {description === null ? (
+              <Info>
+                Please select above available vendors for this adventure.
+              </Info>
             ) : (
-              <Title>{description.vendor.name}</Title>
+              <React.Fragment>
+                <Title>{description.vendor.name}</Title>
+                <Subtitle>{description.description}</Subtitle>
+                <PriceInfo>Price: Rs.{description.prices[0].value}</PriceInfo>
+                <Subtitle>Check your date:</Subtitle>
+                <form>
+                  <DatePicker
+                    onChange={(date) => handleDate(date)}
+                    selected={date}
+                    dateFormat="yyyy-MM-dd"
+                    minDate={new Date()}
+                    placeholderText="Enter your arrival date"
+                  />
+                </form>
+                <RoomsContainer>
+                  {description!==null && description.serviceInfo.map((service) =>
+                    service.day === Day(day) ? (
+                      <BookingCard color={"rgb(242,252,241)"}> hello</BookingCard>
+                    ) : null
+                  )}
+                </RoomsContainer>
+              </React.Fragment>
             )}
           </DescriptionContainer>
         </React.Fragment>
