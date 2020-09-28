@@ -103,12 +103,20 @@ const AdventureBooking = (props) => {
                     dateFormat="yyyy-MM-dd"
                     minDate={new Date()}
                     placeholderText="Enter your arrival date"
+                    className='adventureDate'
                   />
                 </form>
                 <RoomsContainer>
                   {description!==null && description.serviceInfo.map((service) =>
                     service.day === Day(day) ? (
-                      <BookingCard color={"rgb(242,252,241)"}> hello</BookingCard>
+                      <BookingCard color={"rgb(242,252,241)"} key={service._id}>
+                        <PriceInfo>
+                          {Day(day)}
+                        </PriceInfo>
+                        <Info>From: {service.startTime.slice(11,19)}</Info>
+                        <Info>To: {service.endTime.slice(11,19)}</Info>
+                        <Info>Capacity: {service.maximumClientsToServe} People</Info>
+                      </BookingCard>
                     ) : null
                   )}
                 </RoomsContainer>
@@ -250,8 +258,9 @@ const BookingCard = styled.div`
   }
 `;
 const Info = styled.p`
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   margin: 1rem 0;
+  text-align:center;
 `;
 
 const RoomInfo = styled.p`

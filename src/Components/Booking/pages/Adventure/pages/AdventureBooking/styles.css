@@ -38,3 +38,8 @@
   border-left-color: #ccc;
   right: 1em;
 }
+.adventureDate{
+  background-color:lightgrey;
+  border: 2px solid blue;
+  text-align:center;
+}
