@@ -103,22 +103,27 @@ const AdventureBooking = (props) => {
                     dateFormat="yyyy-MM-dd"
                     minDate={new Date()}
                     placeholderText="Enter your arrival date"
-                    className='adventureDate'
+                    className="adventureDate"
                   />
                 </form>
                 <RoomsContainer>
-                  {description!==null && description.serviceInfo.map((service) =>
-                    service.day === Day(day) ? (
-                      <BookingCard color={"rgb(242,252,241)"} key={service._id}>
-                        <PriceInfo>
-                          {Day(day)}
-                        </PriceInfo>
-                        <Info>From: {service.startTime.slice(11,19)}</Info>
-                        <Info>To: {service.endTime.slice(11,19)}</Info>
-                        <Info>Capacity: {service.maximumClientsToServe} People</Info>
-                      </BookingCard>
-                    ) : null
-                  )}
+                  {description !== null &&
+                    description.serviceInfo.map((service) =>
+                      service.day === Day(day) ? (
+                        <BookingCard
+                          color={"rgb(242,252,241)"}
+                          key={service._id}
+                        >
+                          <PriceInfo>{Day(day)}</PriceInfo>
+                          <Info>From: {service.startTime.slice(11, 19)}</Info>
+                          <Info>To: {service.endTime.slice(11, 19)}</Info>
+                          <Info>
+                            Capacity: {service.maximumClientsToServe} People
+                          </Info>
+                          <AdventureBookButton>Book now</AdventureBookButton>
+                        </BookingCard>
+                      ) : null
+                    )}
                 </RoomsContainer>
               </React.Fragment>
             )}
@@ -128,58 +133,6 @@ const AdventureBooking = (props) => {
     </BookingInformation>
   );
 };
-
-// <Title>{data.vendor[0].name}</Title>
-
-//             <Subtitle color={"gray"}>{data.vendor[0].description}</Subtitle>
-
-//             <Subtitle color={"black"}>
-//               Room
-//               {data.vendor[0].rooms.length > 1
-//                 ? `s: ( ${data.vendor[0].rooms.length} )`
-//                 : `: ( ${data.vendor[0].rooms.length} )`}
-//             </Subtitle>
-
-//             <RoomsContainer>
-//               {data.vendor[0].rooms.map((room) => (
-//                 <BookingCard
-//                   color={
-//                     room.booked ? "rgb(252, 241, 242)" : "rgb(242,252,241)"
-//                   }
-//                   key={room._id}
-//                 >
-//                   <Info>Room No: {room.roomNo}</Info>
-//                   <RoomInfo>
-//                     Adult: {room.capacity.adult}, Children:{" "}
-//                     {room.capacity.child}
-//                   </RoomInfo>
-//                   <PriceInfo>
-//                     Rs.
-//                     {room.prices.map((price) =>
-//                       price.isCurrent ? price.value : null
-//                     )}
-//                   </PriceInfo>
-//                   <BookButton
-//                     onClick={() => {
-//                       showModal(true);
-//                       const roomPrice = room.prices.map((price) =>
-//                         price.isCurrent ? price.value : null
-//                       );
-//                       const priceID = room.prices.map((price) =>
-//                         price.isCurrent ? price._id : null
-//                       );
-//                       setName(data.vendor[0].name);
-//                       setRoom(room.roomNo);
-//                       setRoomID(room._id);
-//                       setPrice(roomPrice);
-//                       setPriceID(priceID);
-//                     }}
-//                   >
-//                     {room.booked ? "Reserved" : "Book Now"}
-//                   </BookButton>
-//                 </BookingCard>
-//               ))}
-//             </RoomsContainer>
 
 const BookingInformation = styled.div`
   height: 100vh;
@@ -260,12 +213,7 @@ const BookingCard = styled.div`
 const Info = styled.p`
   font-size: 2.2rem;
   margin: 1rem 0;
-  text-align:center;
-`;
-
-const RoomInfo = styled.p`
-  font-size: 2rem;
-  margin: 1rem 0;
+  text-align: center;
 `;
 
 const PriceInfo = styled.p`
@@ -292,14 +240,21 @@ const BookButton = styled.button`
     background-color: black;
   }
 `;
-const Backdrop = styled.div`
-  width: 100%;
-  height: 100vh;
-  background-color: rgb(0, 0, 0, 0.5);
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: 200;
+const AdventureBookButton = styled.div`
+  outline: none;
+  border: 2px solid green;
+  padding: 1rem;
+  margin: 1rem 2rem;
+  font-size: 1.6rem;
+  border-radius: 1rem;
+  color: white;
+  background-color: green;
+  transition: all 0.2s ease-in;
+  cursor: pointer;
+  &:hover {
+    background-color: white;
+    color: green;
+  }
 `;
 
 export default AdventureBooking;
