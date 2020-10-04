@@ -18,8 +18,6 @@ const rotateAnimation = keyframes`
         transform:rotate(360deg);
     }
 `;
-
-
 const Loading = styled.div`
     height:6rem;
     width:6rem;

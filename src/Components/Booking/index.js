@@ -18,6 +18,7 @@ const features = [
 const Booking = (props) => {
   const logoutHandler = () => {
     localStorage.clear();
+    window.location.reload();
   };
 
   const { currentUser } = props;
