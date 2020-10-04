@@ -4,7 +4,7 @@ import moment from "moment";
 import styled from "styled-components";
 import { connect } from "react-redux";
 
-const SOCKET_ENDPOINT = "http://localhost:5003";
+const SOCKET_ENDPOINT = "https://explore-it-travel.herokuapp.com";
 
 const BookTravel = (props) => {
   const [travel, setTravel] = useState();
@@ -40,22 +40,17 @@ const BookTravel = (props) => {
 
   const handleSeatClick = ({ status, seat }) => {
     if (!status) {
-      alert("Touching");
       setChosenSeats([...chosenSeats, seat]);
       socket.emit("seatTouch", seat);
     } else if (status === "BOOKED") {
-      alert("Already Booked");
     } else if (status === "UNAVAILABLE") {
       alert("UNAVAILABLE");
     } else if (status === "SELECTED") {
-      alert("Untouching");
       const newChosenSeats = chosenSeats.filter((seatId) => seatId !== seat);
       setChosenSeats(newChosenSeats);
       socket.emit("seatUnTouch", seat);
     }
   };
-
-  console.log(chosenSeats);
 
   const {
     vehicle: { seats },
@@ -77,7 +72,7 @@ const BookTravel = (props) => {
   };
 
   return (
-    <div>
+    <PageWrapper>
       <h2>
         {travel.from} - {travel.to}
       </h2>
@@ -193,8 +188,8 @@ const BookTravel = (props) => {
           })}
         </BusColumn>
       </BusWrapper>
-      <button onClick={handleBooking}>Book Now !</button>
-    </div>
+      <Button onClick={handleBooking}>Book Now !</Button>
+    </PageWrapper>
   );
 };
 
@@ -204,6 +199,7 @@ const BusWrapper = styled.div`
   grid-gap: 40px;
   padding: 20px;
   background-color: #f0f0f0;
+  margin: 20px 0;
 `;
 
 const BusColumn = styled.div`
@@ -228,6 +224,23 @@ const Seat = styled.div`
   padding: 10px;
   border-radius: 3px;
   cursor: pointer;
+`;
+
+const Button = styled.button`
+  color: #ffffff;
+  background-color: #c54409;
+  font-size: 2.2rem;
+  padding: 1rem;
+  width: 60%;
+  outline: none;
+  border: none;
+  border-radius: 1rem;
+
+  cursor: pointer;
+`;
+
+const PageWrapper = styled.div`
+  margin: 30px auto;
 `;
 
 const mapStateToProps = (state) => ({
