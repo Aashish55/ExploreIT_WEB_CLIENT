@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
 import "./style.css";
 import axios from "axios";
 import Notification from "../../../../../Notification/Notification";
@@ -69,10 +68,12 @@ class BookFormModal extends Component {
       const bookingData = {
         checkInDate: this.state.checkInDate,
         checkOutDate: this.state.checkOutDate,
-        bookingInfo: [{
+        bookingInfo: [
+          {
             room: this.state.roomID,
             price: this.state.priceID,
-          }]
+          },
+        ],
       };
       axios
         .post(

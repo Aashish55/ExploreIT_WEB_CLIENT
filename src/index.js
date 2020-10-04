@@ -20,6 +20,7 @@ import Registration from "./Components/Auth/Registration";
 import Home from "./Components/Home";
 import Booking from "./Components/Booking";
 import Spinner from "./Components/Spinner/Spinner";
+import "react-datepicker/dist/react-datepicker.css";
 
 const store = createStore(rootReducer, composeWithDevTools());
 
@@ -28,7 +29,12 @@ const Root = (props) => {
     if (localStorage.jwtToken) {
       setAuthorization(localStorage.jwtToken);
       props.setUser(jwt.decode(localStorage.jwtToken));
-      props.history.push("/booking");
+      if (
+        props.history.location.pathname === "/login" ||
+        props.history.location.pathname === "/registration"
+      ) {
+        props.history.push("/booking");
+      }
     } else {
       props.history.push("/");
       props.clearUser();

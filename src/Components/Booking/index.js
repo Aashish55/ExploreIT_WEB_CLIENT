@@ -23,7 +23,10 @@ const Booking = (props) => {
   const { currentUser } = props;
 
   useEffect(() => {
-    props.history.push("/booking/hotel");
+    console.log(props.history.location.pathname);
+    if (props.history.location.pathname === "/booking") {
+      props.history.push("/booking/hotel");
+    }
   }, []);
 
   return (
