@@ -4,6 +4,7 @@ import "./styles.css";
 import styled from "styled-components";
 import Spinner from "../../../../../Spinner/Spinner";
 import DatePicker from "react-datepicker";
+import { useSelector } from "react-redux";
 import "react-datepicker/dist/react-datepicker.css";
 
 const AdventureBooking = (props) => {
@@ -12,6 +13,9 @@ const AdventureBooking = (props) => {
   const [loading, setLoading] = useState();
   const [description, setDescription] = useState(null);
   const [date, handleDate] = useState(new Date());
+  const {
+    user: { currentUser: user },
+  } = useSelector((state) => ({ user: state.user }));
   const day = date.getDay();
 
   const Day = (dayFromDate) => {
@@ -53,9 +57,32 @@ const AdventureBooking = (props) => {
       });
   }, []);
 
-  console.log(data);
-  console.log(description);
-  console.log(date);
+  const handleBooking = (serviceInfo) => {
+    const finalBody = {
+      bookedBy: user._id,
+      service: description._id,
+      adventureDate: date,
+      bookingInfo: [
+        {
+          serviceInfo: serviceInfo._id,
+          price: description.prices[0]._id,
+          bookedFor: user._id,
+        },
+      ],
+    };
+
+    axios
+      .post(
+        `https://explore-it-adventure.herokuapp.com/api/v1/bookings`,
+        finalBody
+      )
+      .then((data) => {
+        alert("Booking Successful");
+      })
+      .catch((err) => {
+        alert("Booking Failed");
+      });
+  };
 
   return (
     <BookingInformation>
@@ -117,10 +144,14 @@ const AdventureBooking = (props) => {
                           <PriceInfo>{Day(day)}</PriceInfo>
                           <Info>From: {service.startTime.slice(11, 19)}</Info>
                           <Info>To: {service.endTime.slice(11, 19)}</Info>
-                          <Info>
+                          {/* <Info>
                             Capacity: {service.maximumClientsToServe} People
-                          </Info>
-                          <AdventureBookButton>Book now</AdventureBookButton>
+                          </Info> */}
+                          <AdventureBookButton
+                            onClick={() => handleBooking(service)}
+                          >
+                            Book now
+                          </AdventureBookButton>
                         </BookingCard>
                       ) : null
                     )}
