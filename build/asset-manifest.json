@@ -1,0 +1,39 @@
+{
+  "files": {
+    "main.css": "/static/css/main.dc6dce81.chunk.css",
+    "main.js": "/static/js/main.72b8b91b.chunk.js",
+    "main.js.map": "/static/js/main.72b8b91b.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.6b35ced3.js",
+    "runtime-main.js.map": "/static/js/runtime-main.6b35ced3.js.map",
+    "static/css/2.e6ac38db.chunk.css": "/static/css/2.e6ac38db.chunk.css",
+    "static/js/2.4c5981bc.chunk.js": "/static/js/2.4c5981bc.chunk.js",
+    "static/js/2.4c5981bc.chunk.js.map": "/static/js/2.4c5981bc.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.d3fb2a75afeab94427c215768cf55ade.js": "/precache-manifest.d3fb2a75afeab94427c215768cf55ade.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.e6ac38db.chunk.css.map": "/static/css/2.e6ac38db.chunk.css.map",
+    "static/css/main.dc6dce81.chunk.css.map": "/static/css/main.dc6dce81.chunk.css.map",
+    "static/js/2.4c5981bc.chunk.js.LICENSE.txt": "/static/js/2.4c5981bc.chunk.js.LICENSE.txt",
+    "static/media/Logo.png": "/static/media/Logo.e46a127d.png",
+    "static/media/adventure.jpg": "/static/media/adventure.4ba85e4e.jpg",
+    "static/media/bethanchowk.jpg": "/static/media/bethanchowk.bf6ec0d9.jpg",
+    "static/media/bhotekoshi.jpg": "/static/media/bhotekoshi.1783ce56.jpg",
+    "static/media/dhulikhel.jpg": "/static/media/dhulikhel.f10e0098.jpg",
+    "static/media/gokyo.jpg": "/static/media/gokyo.d482aaf1.jpg",
+    "static/media/kalinchowk.jpg": "/static/media/kalinchowk.53e1ae2c.jpg",
+    "static/media/mardi.jpg": "/static/media/mardi.37e18b0b.jpg",
+    "static/media/muktinath.jpg": "/static/media/muktinath.38bebdc7.jpg",
+    "static/media/muldaikhopra.jpg": "/static/media/muldaikhopra.89775108.jpg",
+    "static/media/mustang.jpg": "/static/media/mustang.d59aebe7.jpg",
+    "static/media/panauti.jpg": "/static/media/panauti.a42d7429.jpg",
+    "static/media/pokhara.jpg": "/static/media/pokhara.29ff14ab.jpg",
+    "static/media/sworgadwari.jpg": "/static/media/sworgadwari.29b23f79.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.6b35ced3.js",
+    "static/css/2.e6ac38db.chunk.css",
+    "static/js/2.4c5981bc.chunk.js",
+    "static/css/main.dc6dce81.chunk.css",
+    "static/js/main.72b8b91b.chunk.js"
+  ]
+}
