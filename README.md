@@ -1,4 +1,6 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Screenshots of the app
+
+<img src='/src/Screenshots/Screenshot (5).png' width="500px">
 
 ## Available Scripts
 
