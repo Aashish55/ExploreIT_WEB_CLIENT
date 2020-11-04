@@ -1,6 +1,14 @@
 Screenshots of the app
 
-<img src='/src/Screenshots/Screenshot (5).png' width="500px">
+<img src='/src/Screenshots/Screenshot (5).png' width="800px">
+<img src='/src/Screenshots/Screenshot (6).png' width="800px">
+<img src='/src/Screenshots/Screenshot (7).png' width="800px">
+<img src='/src/Screenshots/Screenshot (8).png' width="800px">
+<img src='/src/Screenshots/Screenshot (9).png' width="800px">
+<img src='/src/Screenshots/Screenshot (10).png' width="800px">
+<img src='/src/Screenshots/Screenshot (11).png' width="800px">
+<img src='/src/Screenshots/Screenshot (12).png' width="800px">
+<img src='/src/Screenshots/Screenshot (13).png' width="800px">
 
 ## Available Scripts
 
